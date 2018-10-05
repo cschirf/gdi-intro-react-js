@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GDI Slides Template - The GDI HTML Presentation Framework</title>
+
+		<meta name="description" content="Girl Develop It framework for easily creating beautiful presentations using HTML in GDI theme. Forked from Hakim El Hattab's reveal.js">
+		<meta name="author" content="Girl Develop It">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="dist/css/reveal.css">
+		<link rel="stylesheet" href="dist/css/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- light editor <link rel="stylesheet" href="dist/css/light.css">-->
+		<!-- dark editor --><link rel="stylesheet" href="dist/css/dark.css">
+		<!-- <link rel="stylesheet" href="dist/css/zenburn.css"> -->
+
+		<link rel="stylesheet" href="plugin/accessibility-helper/css/accessibility-helper.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!-- If use the PDF print sheet so students can print slides-->
+
+		<link rel="stylesheet" href="dist/css/print/pdf.css" type="text/css" media="print">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<!--[if lt IE 9]>
+        <script src="dist/js/html5shiv.js"></script>
+        <![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+        <!-- Opening -->
+				<section>
+					<img src="dist/img/circle-gdi-logo.png" alt="GDI Logo" class="noborder"/>
+					<h1>Introduction to React.js</h1>
+					<h2>Up and running, and beyond</h2>
+					<p>
+						<small>Found at <a href ="https://github.com/cschirf/gdi-intro-react-js">github</a>.</small>
+					</p>
+					<!-- <p>
+						<small>Marcela Rodriguez / <a href="http://twitter.com/arilaen">@arilaen</a></small>
+					</p> -->
+				</section>
+        <!-- Compatibility-->
+				<section>
+					<h2>Heads Up</h2>
+					<p>
+						Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.</p>
+					<p class="green">Some "rules"</p>
+					<ul>
+              <li>We are here for you!</li>
+              <li>Every question is important</li>
+              <li>Help each other</li>
+              <li>Have fun</li>
+          </ul>
+				</section>
+
+				<section>
+					<h2>Introductions</h2>
+					<h3>Tell us about yourself.</h3>
+					<ul>
+						<li>Who are you?</li>
+						<li>What do you hope to get out of the class?</li>
+						<li>What is your development background?</li>
+						<li>If you could make any website, what would it be? or Which of your web projects are you most proud of?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Prerequisites</h2>
+					<ul>
+						<li>HTML/CSS</li>
+						<li>Javascript</li>
+						<li>ES6 (we will cover the basics here)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>You should have:</h2>
+					<ul>
+							<li>A <a href="https://codepen.io">Codepen account</a></li>
+							<li>A text editor (<a href="https://atom.io">Atom</a>, <a href="https://sublimetext.com">Sublime Text</a>) or IDE</li>
+							<li>Google Chrome with <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Two Day Agenda</h2>
+					<ol>
+						<li>Hello World! Components, Props, State, JSX, ES6</li>
+						<li>More ES6, Inline Styles, form basics</li>
+						<li>Best practices, view containers, more on forms</li>
+						<li>Recreate famous sites in two hours, Detour into Flux pattern/Redux/the React of tomorrow</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Recommended Resources</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/">React Docs</a></li>
+						<li><a href="https://www.codecademy.com/learn/react-101">Codecademy courses</a></li>
+						<li><a href="https://www.codeschool.com/courses/powering-up-with-react">Codeschool course</a></li>
+						<li><a href="https://egghead.io/courses/start-using-react-to-build-web-applications">Egghead: Start Using React to Build Web Applications</a></li>
+						<li><a href="https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer/#learn-react-js">And many more here</a></li>
+					</ul>
+				</section>
+
+				<!-- <section>
+					<h2>By the end of day 1 you'll know how to use:</h2>
+					<ul>
+						<li>Components</li>
+						<li>JSX</li>
+						<li>Props</li>
+						<li>State + setState</li>
+					</ul>
+				</section> -->
+
+				<section>
+					<h2>What is React?</h2>
+					<ul>
+						<li>The V in MVC</li>
+						<li>
+							React is a declarative, lightweight, and flexible JavaScript library for building user interfaces.
+						</li>
+						<li>
+							It renders HTML, handles events, and manages local state
+						</li>
+						<li>Developed by Facebook and open-sourced</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Why use React?</h2>
+					<ul>
+						<li><i>Fast</i> 🏎️</li>
+						<li>Declarative</li>
+						<li>Easy to understand and maintain at scale</li>
+						<li>Flexibility&mdash; can be used with your favorite logic/routing libraries. (But React router is great)</li>
+						<li>In fact, it's so flexible that it can be used on the server side as well as the client side (for isomorphic apps)!</li>
+						<li>And of course it can be used for cross-platform mobile development with React Native</li>
+					</ul>
+
+					<aside class="notes">
+						<li>
+							Fast&emdash; hella fast bc of virtual dom & efficient state management
+						</li>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Should I use React?</h2>
+					<ul>
+						<li>Great for dynamic sites with lots of data</li>
+						<li>Also great if you want to use vanilla JS and ES6, rather than learn a new DSL (domain specific language)</li>
+						<li>May be overkill for very small, static sites, since it requires more explicit code than other frameworks</li>
+						<li>Some people prefer to keep JS and HTML separate (and prefer Vue or AngularJS) - but don't knock JSX until you've tried it!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>What React does not do</h3>
+					<ul>
+						<li class="fragment">React by itself does not manage global state&mdash; you&rsquo;ll need something like Redux or Flux for that</li>
+						<li class="fragment">React is not a framework. It is a lightweight library (so it only comes with the basics).</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Some vocab to get started</h2>
+					<ul>
+						<li>Component</li>
+						<li>Class</li>
+						<li>JSX</li>
+						<li>Transpiling</li>
+						<li>Virtual DOM</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>What is a <strong>Component</strong>?</h4>
+					<ul>
+						<li>Components are the building blocks of React</li>
+						<li>You connect components together to build an appliation, kind of like stacking legos</li>
+						<li>They are classes that extend React.Component</li>
+						<li>They always implement a render function, which outputs HTML</li>
+					</ul>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+		  render() {}
+		}
+					</code></pre>
+				</section>
+
+				<section>
+					<h4>What is a <strong>Class</strong>?</h4>
+					<ul>
+						<li>A class is a new Javascript feature, added in ES6 (ECMA2015).</li>
+						<li>It is literally a function with syntatic sugar, that behaves similarly to classes in object-oriented languages (like Java).</li>
+						<li>A class can have a constructor function, which is run on initialization.</li>
+						<li>A class can extend another class with the "extends" keyword. If it does so, it's constructor needs to use the word super().</li>
+						<li><em>We'll review all of this later!</em></li>
+					</ul>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			constructor() {
+				super();
+			}
+		}
+					</code></pre>
+					<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">MDN docs</a></p>
+					<aside>
+						you actually dont need the constructor w/ the new babel stuff (but codepen doesnt seem to support that rn)
+					</aside>
+				</section>
+
+				<section>
+					<h2>What is <strong>JSX</strong>?</h2>
+					<ul>
+						<li>Think of it as code that looks like HTML, and is <strong>transpiled</strong> into Javascript that generates HTML.</li>
+						<li>(If you're curious about the X, the name is short for Javascript XML.)</li>
+						<li>The major advantages of JSX are: (1) it looks a lot like HTML and (2) it is more concise than JS</li>
+						<li>Making smaller, reusable components is also easier, versus other frameworks where a new template file and JS file need to be created for each new component.</li>
+						<li><a href="https://jsx.github.io/">Read more about the benefits here</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What is <strong>JSX</strong>?</h2>
+					<ul>
+						<li>Almost fully identical in appearance to HTML - except:</li>
+						<li><strong>className</strong> - Instead of writing &lt;li class="red"&gt;, you would write &lt;li className="red"&gt;. This is because class is now a reserved word in Javascript.</li>
+						<li><strong>key</strong> - To optimize list display performance, where lists can be reordered/changed, React asks for a key attribute that points to a unique ID for each list element.</li>
+						<li><strong>Synthetic events</strong> - Some event handlers (onSubmit, onClick) have different names or implementations in different browsers. The HTML created by your code will be browser specific (onSubmit will turn into submit, etc), simplifying cross browser compatibility.</li>
+						<li>And some other exceptions we might get to later!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What is <strong>JSX</strong>?</h2>
+					<h4>Syntax - Hello World example</h4>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			constructor() {
+				super();
+			}
+			render() {
+				return (&lt;div&gt;Hello World!&lt;/div&gt;);
+			}
+		}
+					</code></pre>
+					<p>Now, in another component, we can use the Greeting component, with the self-closing tag:</p>
+					<pre><code class="javascript">
+		class Layout extends React.Component {
+			render() {
+				return (&lt;Greeting /&gt;);
+			}
+		}
+				</code></pre>
+				</section>
+
+				<section>
+					<h2>What is <strong>JSX</strong>?</h2>
+					<h4>Syntax - Using JS in JSX</h4>
+					<p>Javascript can be used in JSX as long as it is surrounded by single curly braces ({}).</p>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			constructor() {
+				super();
+			}
+			render() {
+				const message = 'Hello World!';
+				return (&lt;div&gt;{message}&lt;/div&gt;);
+			}
+		}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>What are <strong>transpiling</strong> and <strong>compiling</strong>?</h2>
+					<p>Transpilation is the process of turning Javascript that cannot be understood by the browser (ES6, JSX) into the Javascript understood by browsers today (ES5).<p>
+					<p>It is usually done with <a href="https://babeljs.io">BabelJS</a>.</p>
+					<p>Compilation is the process of turning one language into another</p>
+					<p>
+						Transpiling is compiling between two languages that are similar.
+						So you can use compilation and transpiling interchangably when talking
+						about turning ES6/JSX into Javascript (but almost everyone uses transpile).
+					</p>
+				</section>
+
+				<section>
+					<h2>What is the <strong>Virtual DOM</strong>?</h2>
+					<ul>
+						<li>First things first: the browser DOM is an in-memory abstraction of HTML</li>
+						<li><em>DOM stands for <strong>Document Object Model</strong></em></li>
+						<li>Updating the DOM requires browser manipulation, which is slow</li>
+						<li>
+							The virtual DOM is an in-memory representation of the DOM. Updating the virtual
+							DOM does not cause the screen to be repainted, so it is much faster. Like, <i>much</i> faster.
+						</li>
+					</ul>
+
+					<aside class="notes">
+						<li>
+							this is the biggest reasons why other frameworks like
+							angular and ember are slow-- they are updating the DOM more than they need to
+						</li>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Example Illustration of a DOM</h2>
+					<div class="container--multicolumn">
+						<div class="container--even-width-column">
+							<img src="imgs/example-dom-1.png" />
+						</div>
+						<div class="container--even-width-column">
+<pre><code class="html">
+&lt;html&gt;
+  &lt;head&gt;
+    <title>kittenz</title>
+    <meta ... />
+    <meta ... />
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;o hai thair frend&lt;/h1&gt;
+    &lt;p&gt;
+      Read about
+      &lt;a href="a-blog-post.html"&gt;
+        our new kitten!
+      &lt;/a&gt;.
+      Why kittens are great
+    &lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;They clean themselves&lt;/li&gt;
+      &lt;li&gt;They do adorable things&lt;/li&gt;
+      &lt;li&gt;They never bite you or get into trouble&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>What is the <strong>Virtual DOM</strong>?</h2>
+					<p>We use ReactDOM.render to add a component to the VirtualDOM.</p>
+					<p>Whenever the page loads, or data changes after a page load,
+						React creates a new VirtualDOM, and compares it to the old one.
+						This is called <b>diffing</b>.
+						It takes the changes between them and applies them to the real DOM.
+						This results in less browser manipulation and faster performance.
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			render() {
+				return (&lt;div&gt;Hello World!&lt;/div&gt;);
+			}
+		}
+		ReactDOM.render(&lt;Greeting /&gt;, document.getElementById('Greeting'));
+					</code></pre>
+					<p>The first argument to ReactDOM.render() is the JSX to render, and the second is an element on the page to insert it in (selected with vanilla JS).</p>
+					<p><em>Note that we don't need the constructor method yet, but we'll start using it later.</em></p>
+
+					<aside class="notes">
+						<li>
+							for example, if you have a todo list of 10 items, and you edit one item,
+							only the DOM related that single item would be updated.
+							in angular, e.g. the whole list would be updated.
+						</li>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Let's play on CodePen!</h2>
+					<p>Visit <a href="https://codepen.io/lomemire/pen/aRzNJe">Hello World example</a> on Codepen: https://codepen.io/lomemire/pen/aRzNJe
+					</p>
+				</section>
+
+				<section>
+					<h2>Deconstructing the Hello World code</h2>
+					<h4>1. Generate HTML</h4>
+					<p>Create a function that represents an HTML component's state, and returns HTML in a render method</p>
+					<pre><code class="javascript">
+		class App extends React.Component {
+		  render() {
+		    return (&lt;h1&gt;Hello world!&lt;/h1&gt;);
+		  }
+		}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Deconstructing the Hello World code</h2>
+					<h4>2. Add HTML to the page</h4>
+					<p>
+						Update the DOM, using a diff of the virtual DOM. First argument is new HTML, second is the element to insert it in.
+					</p>
+					<pre><code class="javascript">
+		ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>How to make your own React Hello World Codepen</h2>
+					<p>Demo: will demonstrate how to use Babel and add React and ReactDOM to a new CodePen.</p>
+					<p>Make sure you've created an account so you can create your own as well!</p>
+				</section>
+
+				<section>
+					<h2><a href="https://facebook.github.io/react">Official React site!</a></h2>
+					<p>Quick overview, checking out their docs and tutorial</p>
+				</section>
+
+				<section>
+					<h2>Some more vocab!</h2>
+					<ul>
+						<li>Props</li>
+						<li>State</li>
+						<li>setState</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What are <strong>Props</strong>?</h2>
+					<ul>
+						<li>Props are attributes passed down from one component to another</li>
+						<li>A component's props can be accessed through this.props</li>
+						<li>A component's props are read-only.
+							Remember that functions are first class citizens in JS,
+							so they can be passed down as props as well.
+							<!-- <em>We'll see why this is important soon.</em> -->
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Hello World with Props</h2>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			render() {
+				return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+			}
+		}
+		class App extends React.Component {
+			render() {
+				const message = 'Hello World!';
+				return (&lt;Greeting message={message} /&gt;);
+			}
+		}
+		ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+					</code></pre>
+				</section>
+
+        <section>
+          <h1>Let's develop it!</h1>
+        </section>
+
+        <section>
+          <h2>Animal Cards</h2>
+          <ul>
+            <li>
+              We're going to create a simple AnimalCard component that will display
+              some basic information about an animal.
+            </li>
+            <li>
+              For now, let's just show: the name, the breed, and an image.
+            </li>
+            <li>
+              For the image, let's make it easy for ourselves and take in a url.
+            </li>
+          </ul>
+          <aside class="notes">
+            ask if the class wants to walk through it or try it on their own first
+          </aside>
+        </section>
+
+        <section>
+          <h2>Here's a template for you to start from</h2>
+<pre><code class="javascript">
+class AnimalCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (...);
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'Coby',
+      breed: 'cat',
+      imageUrl: 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w'
+    };
+  }
+
+  render() {
+    return (
+      <AnimalCard
+        name={this.state.name}
+        breed={this.state.breed}
+        imageUrl={this.state.imageUrl}
+        />
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/GYgGzv?editors=0010">see it in codepen</a>
+        </section>
+
+        <section>
+          <h2>and the result, w/o CSS</h2>
+          <img src="imgs/animal-card-1.png" />
+        </section>
+
+        <section>
+          <h2>Example AnimalCard Implementation</h2>
+<pre><code class="javascript">
+class AnimalCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div>{this.props.name}</div>
+        <div>{this.props.breed}</div>
+        <img src={this.props.imageUrl} />
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'Coby',
+      breed: 'cat',
+      imageUrl: 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w'
+    };
+  }
+
+  render() {
+    return (
+      <AnimalCard
+        name={this.state.name}
+        breed={this.state.breed}
+        imageUrl={this.state.imageUrl}
+        />
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/ePmKGb?editors=0010">see it in codepen</a>
+        </section>
+
+        <section>
+          <h2>Quick note on object destructuring</h2>
+          <p>
+            <b>Object destructuring</b> is a new thing in ES6+.
+            You will often see it used in React code because it can make your code less verbose.
+          </p>
+          <p>
+            For example: you might see something like this.
+          </p>
+<pre><code class="javascript">
+const { name, breed } = this.props;
+console.log('name: ', name);
+console.log('breed: ', breed);
+</code></pre>
+          <p>
+            What this is doing is creating two new variables, <b>name</b> and <b>breed</b>,
+            by pulling the values from <b>this.props</b>.
+            We can then refer to those variables without needing to put
+            <b>this.props</b> in front of them. Same for <b>state</b>.
+          </p>
+          <p>
+            Note that the variables created by destructuring are only available
+            in the context of whatever scope you're in.
+          </p>
+        </section>
+
+        <section>
+          <h2>Example AnimalCard w/ Destructuring</h2>
+<pre><code class="javascript">
+class AnimalCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { name, breed, imageUrl } = this.props;
+
+    return (
+      <div>
+        <div>{name}</div>
+        <div>{breed}</div>
+        <img src={imageUrl} />
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: 'Coby',
+      breed: 'cat',
+      imageUrl: 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w'
+    };
+  }
+
+  render() {
+    const { name, breed, imageUrl } = this.state;
+    return (
+      <AnimalCard
+        name={name}
+        breed={breed}
+        imageUrl={imageUrl}
+        />
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/gBbKdx?editors=0010">see it in codepen</a>
+        </section>
+
+				<section>
+					<h2>What is <strong>state</strong>?</h2>
+					<ul>
+						<li>
+							<b>You can think of state as what everything is set to in your application at a particular moment in time.</b>
+						</li>
+						<li>
+							Your application does or displays things in a certain way given a certain state.
+						</li>
+						<li>
+							There are two different kinds of state: Global and Local
+						</li>
+						<li>
+							<b>Global state can be seen, and possibly manipulated, by multiple components in your application.</b>
+						</li>
+						<li>
+							<b>Local state can only been seen and manipulated by the component that state is local to.</b>
+						</li>
+						<li>
+							Local state is initialized in the constructor function
+						</li>
+						<li>
+							Global state would be managed by something like Flux or Redux.
+						</li>
+						<li>
+							Local state is managed by React.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h2>What is <strong>state</strong>?</h2>
+					<p>Local state in a parent component can be passed down to its childen as props, as we saw in the Greeting example:</p>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			render() {
+				return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+			}
+		}
+		class App extends React.Component {
+			constructor() {
+				super();
+				this.state = {
+					message: 'Hello World!'
+				};
+			}
+			render() {
+				return (&lt;Greeting message={this.state.message} /&gt;);
+			}
+		}
+		ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Local state</h2>
+					<p>
+						We can change local state by calling <b>setState</b>
+					</p>
+<pre><code lanaguage="javascript">
+class Greeting extends React.Component {
+  state = {
+    localMessage: this.props.message
+  }
+
+  changeLocalMessage = () => {
+    this.setState({ localMessage: 'goodbye' });
+  };
+
+  render() {
+    return (
+      <div onClick={this.changeLocalMessage}>
+        {this.state.localMessage}
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: 'Hello World!'
+    };
+  }
+
+  render() {
+    return (<Greeting message={this.state.message} />);
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+					<a href="https://codepen.io/lomemire/pen/ePmZRx?editors=0010">see it in codepen</a>
+				</section>
+
+				<section>
+					<h2>State Management in React</h2>
+					<ul>
+						<li>
+							<b>Data flow</b> in React is <b>unidirectional</b>.
+							You&rsquo;ll also hear this said as: <b>React has one-way data binding</b>.
+						</li>
+						<li>
+							What this means is that a child component's state doesn't affect the
+							parent's (although the child can use a function to update its parent's component, as we will see in a moment)
+							<!-- What this means is that, unless a child component uses a function to update its parent, in general, a child component's state does not affect the parent. -->
+						</li>
+						<li>
+							This means that there is an explicit hierarchy in your application, where
+							parent components manage one or several smaller child components by sending
+							them information through props.
+						</li>
+						<li>
+							This leads to fewer re-renders and thus is one of the key aspects of React that makes it performant.
+						</li>
+						<li>
+							This is also the thing that makes React less intuitive than, say, Angular, which as two-way data binding.
+							But this will make more sense as we work through more examples and projects.
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Nifty Diagram of Unidirectional Data Flow</h2>
+					<img src="imgs/unidirectional-data-flow.jpg"/>
+				</section>
+
+				<section>
+					<h2>Updating the parent's state through the child</h2>
+					<!-- <p>To change a component's state, use this.setState(newState).</p> -->
+					<p>
+						To have a child component update the parent's state, we'll need the parent to
+						pass in a function to the child through props
+					</p>
+					<pre><code class="javascript">
+		class Greeting extends React.Component {
+			render() {
+				return (&lt;div onClick={this.props.changeMessage.bind(this)}&gt;{this.props.message}&lt;/div&gt;);
+			}
+		}
+		class App extends React.Component {
+			constructor() {
+				super();
+				this.state = {
+					message: 'Hello World!'
+				};
+			}
+			render() {
+				return (&lt;Greeting message={this.state.message} changeMessage={this.sayGoodbye} /&gt;);
+			}
+			sayGoodbye(event) {
+				event.preventDefault();
+				Equivalent to this.setState({ message: 'Goodbye' })
+			}
+		}
+		ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Code Breakdown!</h2>
+					<p>Let's go over the last example piece by piece:</p>
+					<ul>
+						<li>We added a sayGoodbye method to the App class, and used it as an event handler in the Greeting class. Event handlers are functions called from onClick, onSubmit, etc.
+						<pre><code class="javascript">
+		sayGoodbye(event) {
+			event.preventDefault();
+			this.setState({message: 'Goodbye'});
+		}
+						</code></pre></li>
+						<li>Event handlers do not need to be invoked (have parentheses at the end). But when a click happens, the event handler is called with an event as the argument. To prevent side effects (like form submissions from pressing a button in a form), use event.preventDefault() (above).
+							<pre><code class="javascript">
+		render() {
+			return (&lt;div onClick={this.props.changeMessage.bind(this)}&gt;{this.props.message}&lt;/div&gt;);
+		}
+							</code></pre>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Relationship b/w State and Props</h2>
+					<ul>
+						<li>
+							Props represent state from a parent component. They are sent to the child(ren) as read-only values.
+						</li>
+						<li>
+							Props can be used to initialize a child's state. For example, in an edit form.
+						</li>
+						<li>
+							Each component, parent or child, is free to update its own state. When a parent's state changes, its child(ren) will get re-rendered.*
+						</li>
+						<li>
+							* Caveat: There are ways to fine-tune re-renders through lifecycle methods, which we'll talk about a bit later.
+						</li>
+					</ul>
+					<aside class="notes">
+						Let's be more explicit about the relationship between state and props.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Example: State + Props</h2>
+<pre><code class="javascript">
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      localMessage: this.props.defaultMessage
+    };
+  }
+
+  updateLocalMessage = (event) => {
+    event.preventDefault();
+    this.setState({ localMessage: event.target.value });
+  };
+
+  render() {
+    return (
+      <div>
+        <input
+          type="text"
+          value={this.state.localMessage}
+          onChange={this.updateLocalMessage} />
+          <div>
+            {this.state.localMessage}
+          </div>
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: 'Hello World!'
+    };
+  }
+
+  render() {
+    return (<Greeting defaultMessage={this.state.message} />);
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+					<a href="https://codepen.io/lomemire/pen/dgPKXy?editors=0010">see it in codepen</a>
+				</section>
+
+        <section>
+            <h2>Stretch break!</h2>
+            <img src="imgs/kitten-stretching.gif" alt="kitty!" style="height: 40vh;" />
+        </section>
+
+				<section>
+          <h2>Displaying elements from a collection</h2>
+					<p>
+						In the real world, we often have list of things that we want to display,
+            like items on a todo list or users in a system or inventory items in a store.
+					</p>
+          <p>
+            Let's see what it looks like to display multiple child components
+            from a list (like multiple Greeting components, for example).
+          </p>
+          <p>
+            First, let's take a simple example.
+          </p>
+        </section>
+
+        <section>
+          <h2>Displaying HTML elements from a collection</h2>
+<pre><code class="javascript">
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((numbers) =>
+  <li>{numbers}</li>
+);
+
+ReactDOM.render(
+  <ul>{listItems}</ul>,
+  document.getElementById('root')
+);
+</code></pre>
+          <a href="https://codepen.io/gaearon/pen/GjPyQr?editors=0011">codepen (from React site)</a>
+        </section>
+
+        <section>
+          <h2>What does that warning mean</h2>
+<pre>
+Warning: Each child in an array or iterator should have a unique 'key' prop.%s%s
+See https://fb.me/react-warning-keys for more information.
+</pre>
+          <p>
+            In order to know which parts of list of a elements need to be re-rendered,
+            React uses a <b>key</b> on the object.
+          </p>
+          <p>
+            Keys must be unique across the collection. They won't be displayed,
+            it's just for behind-the-scenes stuff.
+          </p>
+        </section>
+
+        <section>
+          <h2>Fixing the warning</h2>
+<pre><code class="javascript">
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map(number =>
+  <li key={number}>{number}</li>
+);
+
+ReactDOM.render(
+  <ul>{listItems}</ul>,
+  document.getElementById('root')
+);
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/YJPjva?editors=0011">codepen</a>
+        </section>
+
+        <section>
+					<h2>ES6+: Arrow functions</h2>
+					<p>Arrow functions are a new, improved syntax for functions</p>
+					<pre><code class="javascript">
+		// Simplified (for when there's on argument and only one call in the function body)
+		this.state.messages.map(message =>
+						(&lt;span key={message.id}&gt;message.value&lt;/span&gt;)
+		);
+		// More common
+		this.state.messages.map((message, index) => {
+			console.log(index);
+			return (&lt;span key={message.id}&gt;message.value&lt;/span&gt;);
+		});
+		// ES5 equivalent
+		this.state.messages.map(function(message) {
+			return (&lt;span key={message.id}&gt;message.value&lt;/span&gt;)
+		});
+					</code></pre>
+					<p>
+            One benefit of using arrow functions is that they do not define their own `this`,
+            so you don't need to bind this anymore! (var that=this, anyone?)
+            And they are more concise than ES5 functions. Yay!
+          </p>
+					<p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">
+              MDN docs for arrow fn
+            </a>
+          </p>
+				</section>
+
+				<section>
+					<h2>Spicier example with Greeting</h2>
+<pre><code class="javascript">
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      messages: [
+        {id: 1, value: 'Good morning'},
+        {id: 2, value: 'Good evening'},
+        {id: 3, value: 'Good night'}
+      ]
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <div>Greetings!</div>
+        <ul>
+          { this.state.messages.map(message => {
+            return (<li key={message.id}>{message.value}</li>);
+          })}
+        </ul>
+
+        <div>
+          { this.state.messages.map(message => {
+            return (<Greeting key={message.id} message={message.value} />);
+          })}
+        </div>
+       </div>
+    );
+  }
+}
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/WabKEW?editors=0010">codepen</a>
+				</section>
+
+        <section>
+					<p>
+            We can clean up this example a bit by pulling out the mapping to its own function.
+          </p>
+<pre><code class="javascript">
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      messages: [
+        {id: 1, value: 'Good morning'},
+        {id: 2, value: 'Good evening'},
+        {id: 3, value: 'Good night'}
+      ]
+    };
+  }
+
+  renderGreetings = () => {
+    return this.state.messages.map(message => {
+      return (<Greeting key={message.id} message={message.value} />);
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <div>Greetings!</div>
+        <div>
+          {this.renderGreetings()}
+        </div>
+       </div>
+    );
+  }
+}
+</code></pre>
+				</section>
+
+        <section>
+					<h1>Let's develop it!</h1>
+				</section>
+
+				<section>
+					<p>
+						Let's expand on our Animal Card project. Now, we'll display multiple cards,
+            which means the parent component (App) needs to hold onto a list of animals.
+					</p>
+        </section>
+
+        <section>
+          <h2>Example Implementation</h2>
+<pre><code>
+class AnimalCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { name, breed, imageUrl } = this.props;
+    return (
+      <div className="cardContainer">
+        <div className="name">{name}</div>
+        <div className="breed">{breed}</div>
+        <img src={imageUrl} />
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      animals: [
+        {
+          id: 1,
+          name: 'Coby',
+          breed: 'cat',
+          imageUrl: 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w'
+        },
+        {
+          id: 2,
+          name: 'kitten 1',
+          breed: 'cat',
+          imageUrl: 'https://placekitten.com/200/200'
+        },
+        {
+          id: 3,
+          name: 'kitten 2',
+          breed: 'cat',
+          imageUrl: 'https://placekitten.com/200/210'
+        }
+      ]
+    };
+  }
+
+  renderAnimals = () => {
+    const { animals } = this.state;
+
+    return animals.map(animal => {
+      return (
+        <AnimalCard
+          key={animal.id}
+          name={animal.name}
+          breed={animal.breed}
+          imageUrl={animal.imageUrl}
+        />
+      );
+    });
+  }
+
+  render() {
+    return (
+     <div className="cardsContainer">
+        {this.renderAnimals()}
+     </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/ZqYMYL?editors=1010#0">codepen</a>
+        </section>
+
+        <section>
+          <h1>Let's play with state</h1>
+        </section>
+
+        <section>
+          <p>
+            We're going to turn our AnimalCard into something a user could update.
+          </p>
+        </section>
+
+
+
+				<!-- <section>
+					<h2>Homework!</h2>
+					<ol>
+					<li>Read about ES6 if it is new to you:
+					<ul>
+						<li><a href="https://www.codeschool.com/courses/es2015-the-shape-of-javascript-to-come">Code School ES2015 course (first lesson is free)</a></li>
+						<li><a href="https://cantina.co/embracing-es6-part1/">Embracing Change By Using New ES6 Features (Cantina blog post)</a></li>
+						<li><a href="https://code.tutsplus.com/articles/use-ecmascript-6-today--net-31582">Use ECMAScript 6 Today</a></li>
+					</ul></li>
+					<li>Browse the <a href="https://facebook.github.io/react/">official React site</a> and complete the <a href="https://facebook.github.io/react/tutorial/tutorial.html">tutorial</a> (at least up to right before "Why Immutability Is Important").</li>
+				</ol>
+				</section> -->
+
+<!--
+				<section>
+					<h2>Day 2!</h2>
+					<ul>
+						<li>Recap of Day 1: ES6, Props/State</li>
+						<li>Homework review</li>
+						<li>New terms: Lifecycle methods, functional components, composition</li>
+						<li>Forms</li>
+						<li>Practice - Todo app</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Day 1 Review</h2>
+					<ul>
+						<li>Pros/cons of React</li>
+						<li>Classes + Components</li>
+						<li>Props</li>
+						<li>State</li>
+						<li>setState</li>
+				</section>
+
+				<section>
+					<h2>Pros and cons of React</h2>
+					<ul>
+						<li>Fast</li>
+						<li>Declarative - Easy to understand and maintain at scale (why?)</li>
+						<li>Flexible</li>
+						<li>Cross-platform mobile development (React Native)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Classes + Components</h2>
+					<ul>
+						<li>Classes: ES6 addition, allows object oriented programming (with JS functions behind the scenes)</li>
+						<li>Components: building blocks of React</li>
+						<li>Your components extend React.Component</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>JSX</h2>
+					<ul>
+						<li>Javascript that looks like HTML, and gets compiled to javascript that renders HTML</li>
+						<li><a href="https://babeljs.io/repl/">See what compiled JSX looks like!</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Props</h2>
+					<ul>
+						<li>Attributes passed down from one component to another</li>
+						<li>A component's props can be accessed through this.props in the render function</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>State</h2>
+					<ul>
+						<li>Data stored in parent component, passed down to child components through props</li>
+						<li>Initialized in the constructor function</li>
+						<li>Updated with this.setState (this.state and this.props are immutable)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Why is immutability important?</h2>
+					<ul>
+						<li>Makes it easier to keep track of changes, test, and use time travel!</li>
+						<li>Thus we use <strong>this.setState</strong> instead of <strong>this.state = ...</strong></li>
+						<li>Helpful methods for copying data: Array.slice, Array.concat, and Object.assign</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Homework review + practice!</h2>
+					<ul>
+						<li>Walkthrough of <a href="https://facebook.github.io/react/tutorial/tutorial.html">official React tutorial</a></li>
+						<li><a href="https://codepen.io/gaearon/pen/gWWZgR">Final result (official)</li>
+						<li><a href="https://codepen.io/gaearon/pen/gWWZgR">My final result (will demo here)</a></li>
+				</section>
+
+				<section>
+					<h2>Today's new topics!</h2>
+					<ul>
+						<li>Lifecycle hooks</li>
+						<li>Functional Components</li>
+						<li>Composition vs Inheritance</li>
+						<li>Forms (Controlled and uncontrolled components)</li>
+					</ul>
+				</section>
+-->
+
+        <section>
+					<h2>Lifecycle hooks</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/state-and-lifecycle.html">Docs</a></li>
+						<li><strong>componentWillMount**</strong>: Function called before component is rendered. This is the most commonly used lifecycle hook (AJAX calls, timers)</li>
+						<li><strong>componentDidMount</strong>: Function called after component is rendered. Useful for third party integrations if really needed (jQuery plugins)</li>
+						<li><strong>componentWillUnmount</strong>: Function called before component is removed from the DOM</li>
+						<li><strong>componentDidUnmount*</strong>: Function called after removal from DOM. Useful for cleanup (removing timers, etc.)</li>
+						<li><a href="https://codepen.io/gaearon/pen/vXdGmd">Official codepen</a></li>
+						<li><a href="https://codepen.io/arilaen/pen/OgNobO">My codepen</a></li>
+					</ul>
+          <aside class="notes">
+            componentWillMount is deprecated in v16
+          </aside>
+				</section>
+
+				<section>
+					<h2>Functional Components</h2>
+					<p>For child components where you only need the render function, and do not need to modify the constructor or lifecycle methods, you can write your component more concisely! (<a href="https://facebook.github.io/react/docs/components-and-props.html">Docs</a>)</p>
+					<p><pre><code class="javascript">
+		function Welcome(props) {
+		  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</h1>;
+		}
+
+		const element = &lt;Welcome name="Sara" /&gt;;
+		ReactDOM.render(
+		  element,
+		  document.getElementById('root')
+		);
+					</code></pre></p>
+					<p><a href="http://codepen.io/gaearon/pen/YGYmEG?editors=0010">Official Codepen</a></p>
+				</section>
+
+				<section>
+					<h2>Composition vs Inheritance</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/composition-vs-inheritance.html">Docs</a></li>
+						<li>Components are very flexible - you can even pass in their contents with <strong><a href="https://codepen.io/gaearon/pen/ozqNOV">props.children</a></strong>!</li>
+						<li>You can also pass <a href="https://codepen.io/gaearon/pen/gwZOJp">JSX elements as your own props</a></li>
+						<li>And you can <a href="http://codepen.io/gaearon/pen/kkEaOZ?editors=0010">extend</a> your own <a href="http://codepen.io/gaearon/pen/gwZbYa?editors=0010">components</a>!</li>
+						<li>Composition is always preferred over inheritance in React - make components as reusable as possible!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Forms</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/forms.html">Docs</a></li>
+						<li>Controlled Components (recommended!)</li>
+						<li>Uncontrolled Components</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Controlled Components</h2>
+					<ul>
+						<li>Forms have internal state, but controlled components keep React state in sync with form state</li>
+						<li>In practice: <strong>value</strong> for all types of inputs (including initial/default values), and run setState <strong>onChange</strong></li>
+						<li>Examples: <pre><code class="javascript">
+		&lt;input type="text" value={this.state.value} onChange={this.handleChange} /&gt;
+		&lt;textarea value={this.state.value} onChange={this.handleChange} /&gt;
+		&lt;select value={this.state.value} onChange={this.handleChange}&gt;
+			  &lt;option value="grapefruit">Grapefruit&lt;/option&gt;...
+		&lt;/select&gt;
+						</code></pre>
+						</li>
+						<li>Official codepen <a href="https://codepen.io/gaearon/pen/VmmPgp?editors=0010">1</a> and <a href="https://codepen.io/gaearon/pen/wgedvV?editors=0010">2</a></li>
+						<li>My codepen <a href="https://codepen.io/arilaen/pen/xrVjNR?editors=0010">1</a> and <a href="https://codepen.io/arilaen/pen/OgNZoE?editors=0010">2</a></li>
+						<li><a href="https://facebook.github.io/react/docs/forms.html">(Form Docs)</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Uncontrolled Components</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/uncontrolled-components.html">Docs</a></li>
+						<li>Use <strong>refs</strong> to store internal form state, and use setState on submit</li>
+						<li>Use <strong>defaultValue</strong> to set initial values in form elements (input, select, etc.)</li>
+						<li>Usually not recommended if you can use controlled components (or Redux)</li>
+						<li><a href="https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/">"Controlled and uncontrolled form inputs in React don't have to be complicated"</a></li>
+						<li><a href="https://codepen.io/gaearon/pen/WooRWa?editors=0010">Official codepen</a></li>
+						<li><a href="https://codepen.io/arilaen/pen/NgNMOE?editors=0010">My codepen</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Homework</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a> exercise</li>
+						<li>and/or: Customize your todo app in codepen</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Day 3 Agenda:</h2>
+					<ul>
+						<li>Recap of the basics and homework</li>
+						<li>Create todo app on Codepen + locally</li>
+						<li>CreateReactApp - create the todo app locally!</li>
+						<li>Personal projects</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Day 1 + 2 Review</h2>
+					<ul>
+						<li>Props, State, setState</li>
+						<li>Classes + Components vs. Functional Components</li>
+						<li>Lifecycle hooks</li>
+						<li>Composition vs Inheritance</li>
+						<li>Forms (Controlled and uncontrolled components)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Lifecycle hooks (review)</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/state-and-lifecycle.html">Docs</a></li>
+						<li><strong>componentWillMount**</strong>: Function called before component is rendered. This is the most commonly used lifecycle hook (AJAX calls, timers)</li>
+						<li><strong>componentDidMount</strong>: Function called after component is rendered. Useful for third party integrations if really needed (jQuery plugins)</li>
+						<li><strong>componentWillUnmount</strong>: Function called before component is removed from the DOM</li>
+						<li><strong>componentDidUnmount*</strong>: Function called after removal from DOM. Useful for cleanup (removing timers, etc.)</li>
+						<li><a href="https://codepen.io/gaearon/pen/vXdGmd">Official codepen</a></li>
+						<li><a href="https://codepen.io/arilaen/pen/OgNobO">My codepen</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Functional Components (review)</h2>
+					<p>For child components where you only need the render function, and do not need to modify the constructor or lifecycle methods, you can write your component more concisely! (<a href="https://facebook.github.io/react/docs/components-and-props.html">Docs</a>)</p>
+					<p><pre><code class="javascript">
+		function Welcome(props) {
+		  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</h1>;
+		}
+
+		const element = &lt;Welcome name="Sara" /&gt;;
+		ReactDOM.render(
+		  element,
+		  document.getElementById('root')
+		);
+					</code></pre></p>
+					<p><a href="http://codepen.io/gaearon/pen/YGYmEG?editors=0010">Official Codepen</a></p>
+				</section>
+
+				<section>
+					<h2>Composition vs Inheritance (review)</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/composition-vs-inheritance.html">Docs</a></li>
+						<li>Components are very flexible - you can even pass in their contents with <strong><a href="https://codepen.io/gaearon/pen/ozqNOV">props.children</a></strong>!</li>
+						<li>You can also pass <a href="https://codepen.io/gaearon/pen/gwZOJp">JSX elements as your own props</a></li>
+						<li>And you can <a href="http://codepen.io/gaearon/pen/kkEaOZ?editors=0010">extend</a> your own <a href="http://codepen.io/gaearon/pen/gwZbYa?editors=0010">components</a>!</li>
+						<li>Composition is always preferred over inheritance in React - make components as reusable as possible!</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Controlled Components (review)</h2>
+					<ul>
+						<li>Forms have internal state, but controlled components keep React state in sync with form state</li>
+						<li>In practice: <strong>value</strong> for all types of inputs (including initial/default values), and run setState <strong>onChange</strong></li>
+						<li>Examples: <pre><code class="javascript">
+		&lt;input type="text" value={this.state.value} onChange={this.handleChange} /&gt;
+		&lt;textarea value={this.state.value} onChange={this.handleChange} /&gt;
+		&lt;select value={this.state.value} onChange={this.handleChange}&gt;
+			  &lt;option value="grapefruit">Grapefruit&lt;/option&gt;...
+		&lt;/select&gt;
+						</code></pre>
+						</li>
+						<li>Official codepen <a href="https://codepen.io/gaearon/pen/VmmPgp?editors=0010">1</a> and <a href="https://codepen.io/gaearon/pen/wgedvV?editors=0010">2</a></li>
+						<li>My codepen <a href="https://codepen.io/arilaen/pen/xrVjNR?editors=0010">1</a> and <a href="https://codepen.io/arilaen/pen/OgNZoE?editors=0010">2</a></li>
+						<li><a href="https://facebook.github.io/react/docs/forms.html">(Form Docs)</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Uncontrolled Components (review)</h2>
+					<ul>
+						<li><a href="https://facebook.github.io/react/docs/uncontrolled-components.html">Docs</a></li>
+						<li>Use <strong>refs</strong> to store internal form state, and use setState on submit</li>
+						<li>Use <strong>defaultValue</strong> to set initial values in form elements (input, select, etc.)</li>
+						<li>Usually not recommended if you can use controlled components (or Redux)</li>
+						<li><a href="https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/">"Controlled and uncontrolled form inputs in React don't have to be complicated"</a></li>
+						<li><a href="https://codepen.io/gaearon/pen/WooRWa?editors=0010">Official codepen</a></li>
+						<li><a href="https://codepen.io/arilaen/pen/NgNMOE?editors=0010">My codepen</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Practice time!</h2>
+					<ul>
+						<li>We'll create a todo app, with initial data from <a href="http://jsonplaceholder.typicode.com/">http://jsonplaceholder.typicode.com</a></li>
+						<li>Follow along <a href="https://codepen.io/arilaen/pen/qjZJBm?editors=0110">here</a> (starting from scratch) or on your own Codepen</li>
+						<li>See the finished codepen <a href="https://codepen.io/arilaen/pen/bRgXNG?editors=0110">here</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Make your own React project on your computer with <a href="https://github.com/facebookincubator/create-react-app">CreateReactApp</a></h2>
+					<ul>
+						<li>Abstracts away build system</li>
+						<li>Great for getting started and making personal sites</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Getting started with CreateReactApp</h2>
+					<ul>
+						<li>Install npm <a href="https://github.com/creationix/nvm">(I recommend doing this with nvm)</a></li>
+						<li>npm install -g create-react-app</li>
+						<li>create-react-app my-app;cd my-app</li>
+						<li>npm start</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Practice - create todo app locally!</h2>
+					<p>We'll do this together, and go over some things to know when coding locally, such as:</p>
+					<ul>
+						<li>Using the <strong>import</strong> and <strong>export</strong> statements</li>
+						<li>Adding a dependency (like jQuery)</li>
+						<li>Organizing files</li>
+						<li>Understanding compile and linter errors</li>
+						<li>Working example <a href="https://github.com/arilaen/create-react-app-demo">here on github</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>For next class:</h2>
+					<p>Start working on your own React project, or brainstorming ideas! Here are some to choose from:
+					<ul>
+						<li>Expand the todo app <em>(remake Trello?)</em></li>
+						<li>Create an album of things (movies, photos, songs, or books), allow the user to vote and/or choose favorites <em>(recreate Netflix?)</em></li>
+						<li>Create a store, allow user to add items to their cart, add reviews <em>(recreate Amazon?)</em></li>
+						<li>Display a newsfeed <em>(recreate Twitter?)</em></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Project tips</h2>
+					<p>Remember that you can use <a href="http://jsonplaceholder.typicode.com/">http://jsonplaceholder.typicode.com</a> as a resource for mock data!</p>
+					<p>Or you can get fancy if you want to use Twitter data (<a href="https://dev.twitter.com/rest/public/search">docs for creating Twitter queries</a>)
+					<p>You can try a small project or something that you might expand after class - it's up to you!</p>
+				</section>
+
+				<section>
+					<h2>Advanced resources</h2>
+					<li>Egghead.io: <a href="https://egghead.io/courses/build-your-first-production-quality-react-app">Build Your First Production Quality React App</a>, <a href="https://egghead.io/courses/getting-started-with-redux">Getting Started with Redux</a>, <a href="https://egghead.io/courses/building-react-applications-with-idiomatic-redux">Building React Applications with Idiomatic Redux</a></li>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h4>Special thanks to Girl Develop It and Hakim El Hattab / hakim.se for reveal.js!</h4>
+				</section>
+
+			</div>
+  		<footer>
+        <div class="copyright">
+          Introduction to React.js -- Girl Develop It Boston
+        </div>
+      </footer>
+		</div>
+
+
+		<script src="dist/js/head.min.js"></script>
+		<script src="dist/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'dist/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -1,6 +1,28 @@
 @import "../template/settings";
 @import "../template/theme.scss";
 
+<<<<<<< HEAD
+=======
+
+/*********************************************
+ * Overrides
+ *********************************************/
+.container--multicolumn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.container--even-width-column {
+  display: flex;
+  width: 50%;
+}
+/*********************************************/
+
+
+
+
+>>>>>>> edce3a2... cschirf - updates
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
