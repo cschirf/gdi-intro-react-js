@@ -3,76 +3,264 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
 
-		<title>Intro to React | Part 2</title>
+  <title>Intro to React | Part 2</title>
 
-		<meta name="description" content="Girl Develop It framework for easily creating beautiful presentations using HTML in GDI theme. Forked from Hakim El Hattab's reveal.js">
-		<meta name="author" content="Girl Develop It">
+  <meta name="description" content="Girl Develop It framework for easily creating beautiful presentations using HTML in GDI theme. Forked from Hakim El Hattab's reveal.js">
+  <meta name="author" content="Girl Develop It">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<link rel="stylesheet" href="dist/css/reveal.css">
-		<link rel="stylesheet" href="dist/css/default.css" id="theme">
+  <link rel="stylesheet" href="dist/css/reveal.css">
+  <link rel="stylesheet" href="dist/css/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<!-- light editor <link rel="stylesheet" href="dist/css/light.css">-->
-		<!-- dark editor --><link rel="stylesheet" href="dist/css/dark.css">
-		<!-- <link rel="stylesheet" href="dist/css/zenburn.css"> -->
+  <!-- For syntax highlighting -->
+  <!-- light editor <link rel="stylesheet" href="dist/css/light.css">-->
+  <!-- dark editor -->
+  <link rel="stylesheet" href="dist/css/dark.css">
+  <!-- <link rel="stylesheet" href="dist/css/zenburn.css"> -->
 
-		<link rel="stylesheet" href="plugin/accessibility-helper/css/accessibility-helper.css">
+  <link rel="stylesheet" href="plugin/accessibility-helper/css/accessibility-helper.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'css/print/pdf.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
 
-		<!-- If use the PDF print sheet so students can print slides-->
+  <!-- If use the PDF print sheet so students can print slides-->
 
-		<link rel="stylesheet" href="dist/css/print/pdf.css" type="text/css" media="print">
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-		<!--[if lt IE 9]>
+  <link rel="stylesheet" href="dist/css/print/pdf.css" type="text/css" media="print">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!--[if lt IE 9]>
         <script src="dist/js/html5shiv.js"></script>
         <![endif]-->
-    </head>
-    <body>
+</head>
 
-		<script src="dist/js/head.min.js"></script>
-		<script src="dist/js/reveal.min.js"></script>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+          <img src="dist/img/circle-gdi-logo.png" alt="GDI Logo" class="noborder"/>
+					<h1>Introduction to React.js</h1>
+					<h2>Part 2: Forms and lifecycle methods</h2>
+					<p>
+						<small>Found at <a href ="https://github.com/cschirf/gdi-intro-react-js">github</a>.</small>
+					</p>
+      </section>
+      
+      <section>
+        <h1>React Forms 101</h1>
+      </section>
 
-		<script>
+      <section>
+        <h2>Controlled v. Uncontrolled Components</h2>
+        <ul>
+          <li>HTML form elements naturally maintain their own internal state</li>
+          <li>However, we usually don't want to use the default HTML behavior and we usually want to be in control of the state</li>
+          <li>If we let the HTML form elements take care of maintaining state, that's an <b>uncontrolled component</b></li>
+          <li>If we take over that state, then it's a <b>controlled component</b></li>
+        </ul>
+      </section>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+      <section>
+					<h2>Controlled Components</h2>
+					<ul>
+            <li>The component will maintain its own internal state</li>
+            <li>Set the <b>value</b> attribute of the HTML element to the correct state variable (this is also true for initial or default values)</li>
+            <li>When the input changes, handle the state change in your own function, which you'll call from <strong>onChange</strong></li>
+            <li>You'll be calling <b>setState</b> in that handle change function</li>
+						<li>Examples: 
+<pre><code class="javascript">
+const handleChange = (event) => {
+  // maybe do some error handling and validation
+  // then persist the change
+  this.setState({ value: event.target.value });
+};
+</code></pre>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+<pre><code class="javascript">
+&lt;input type="text" value={this.state.value} onChange={this.handleChange} /&gt;
+</code></pre>
+            </li>
+            <li><a href="https://codepen.io/lomemire/pen/OBRbBG?editors=0010">simple example in codepen</a></li>
+						<li>Official codepen <a href="https://codepen.io/gaearon/pen/VmmPgp?editors=0010">1</a> and <a href="https://codepen.io/gaearon/pen/wgedvV?editors=0010">2</a></li>
+						<li>GDI codepen <a href="https://codepen.io/arilaen/pen/xrVjNR?editors=0010">1</a> and <a href="https://codepen.io/arilaen/pen/OgNZoE?editors=0010">2</a></li>
+						<li><a href="https://facebook.github.io/react/docs/forms.html">(Form Docs)</a></li>
+					</ul>
+				</section>
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'dist/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true },
-                    { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+				<section>
+					<h2>Uncontrolled Components</h2>
+					<ul>
+            <li><b>Not recommended. Use controlled components or Redux whenever possible.</b></li>
+						<li><a href="https://facebook.github.io/react/docs/uncontrolled-components.html">Docs</a></li>
+						<li>Use <strong>refs</strong> to store internal form state, and use setState on submit</li>
+						<li>Use <strong>defaultValue</strong> to set initial values in form elements (input, select, etc.)</li>
+						<li><a href="https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/">"Controlled and uncontrolled form inputs in React don't have to be complicated"</a></li>
+						<li><a href="https://codepen.io/gaearon/pen/WooRWa?editors=0010">Official codepen</a></li>
+						<li><a href="https://codepen.io/arilaen/pen/NgNMOE?editors=0010">GDI codepen</a></li>
+					</ul>
+        </section>
+        
+        <section>
+          <h2>Synthetic Events</h2>
+          <ul>
+            <li>
+              Remember this dude?
+<pre><code class="javascript">
+const handleChange = (event) => {
+  this.setState({ value: event.target.value });
+};
+</code></pre>
+            </li>
+            <li>When someone interacts with the page (like the user types something in a field or toggles a checkbox), an event gets fired. This is a general JS/HTML concept.</li>
+            <li>Every browser deals with events a little bit differently. So React wraps the native browser events in a <b>SyntheticEvent</b> (*there are also performance implications in their implementation)</li>
+            <li>The interface for SyntheticEvents is exactly the same as regular events, but the events work exactly the same way in all browsers.</li>
+            <li><a href="https://reactjs.org/docs/events.html">official docs</a></li>
+            <li><a href="https://reactjs.org/docs/handling-events.html">offical handling events guide</a></li>
+            <li>refresher on <a href="https://www.youtube.com/watch?v=BtOrr7oTH_8">event propagation</a></li>
+          </ul>
+        </section>
+        
+        <section>
+          <h1>Let's develop it!</h1>
+        </section>
 
-		</script>
+        <section>
+          <p style="text-align: left">
+            Let's create a hackathon sign up form. We'll need to get the following information from the user:
+          </p>
+          <ul>
+            <li>Name</li>
+            <li>Age</li>
+            <li>Have they been to the hackathon before?</li>
+            <li>Dietary restrictions</li>
+          </ul>
+          <p style="text-align: left; margin-top: 1em;">For now, let's just print out the data that we have in a div either below or adjacent to the input section.</p>
+          <img src="imgs/hackathon-form.png" />
+          <aside class="notes">
+            Before moving on, get a feel for what people thought was difficult, easy, initial impressions, general feedback.
+          </aside>
+        </section>
 
-	</body>
+        <section>
+          <h2>Example Implementation</h2>
+<pre><code class="javascript">
+class Greeting extends React.Component {
+  constructor() {
+    super();
+    
+    this.state = {
+      name: '',
+      age: undefined,
+      returning: false,
+      dietaryRestrictions: ''
+    };
+  }
+  
+  handleNameChange = (event) => {
+    this.setState({ name: event.target.value });
+  };
+
+  ...
+
+  handleReturningChange = (event) => {
+    this.setState(prevState => {
+      return { returning: !prevState.returning };
+    });
+  };
+  
+  render() {
+    const { name, age, returning, dietaryRestrictions } = this.state;
+    
+    return (
+      &lt;div className="multicolumn-container"&gt;
+        &lt;div className="column input"&gt;
+          &lt;h2&gt;Input&lt;/h2&gt;
+          &lt;label className="input-label"&gt;
+            Name:
+            &lt;input className="input" type="text" value={name} onChange={this.handleNameChange} /&gt;
+          &lt;/label&gt;
+          ...
+          &lt;label className="input-label"&gt;
+            Have attended hackathon before
+            &lt;input className="input" type="checkbox" value={returning} onChange={this.handleReturningChange} /&gt;
+          &lt;/label&gt;
+          ...
+        &lt;/div&gt;
+        &lt;div className="column output"&gt;
+          ...
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/mzrRPY?editors=0110">codepen</a>
+        </section>
+
+        <!-- bonus round section -->
+        <section>
+          <h2>Asynchronous changes and setState</h2>
+          <ul>
+            <li>
+              Calling <b>setState</b> is not guaranteed to update state synchronously. In fact, React's own docs say: 
+              <blockquote style="width: 100%;">
+                Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
+              </blockquote>
+
+            </li>
+            <li></li>
+            <!-- <li>But sometimes, we want to </li> -->
+            <li><a href="https://medium.com/@wisecobbler/using-a-function-in-setstate-instead-of-an-object-1f5cfd6e55d1">More info</a></li>
+          </ul>
+          <aside class="notes">
+            do ppl know what a callback is?
+          </aside>
+        </section>
+
+        <!-- setState(updater[, callback]) -->
+
+        
+    </div>
+  </div>
+
+  <script src="dist/js/head.min.js"></script>
+  <script src="dist/js/reveal.min.js"></script>
+  <script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        { src: 'dist/js/classList.js', condition: function () { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function () { return !!document.body.classList; } }
+      ]
+    });
+
+  </script>
+</body>
+
 </html>

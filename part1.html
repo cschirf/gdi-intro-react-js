@@ -421,78 +421,27 @@
 						CSS classes to an element, we need to use <b>className</b>
 					</p>
 					<p>there are lots of nifty libraries to help make styles more isolated and manageable, but this will work for now</p>
-<pre><code>
-class AnimalCard extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		const { name, breed, imageUrl } = this.props;
-		return (
-			<div className="cardContainer">
-				<div className="name">{name}</div>
-				<div className="breed">{breed}</div>
-				<img src={imageUrl} />
-			</div>
-		);
-	}
+<pre><code class="javascript">
+class Greeting extends React.Component {
+  render() {
+    return (
+      <div className="messageStyles">
+        {this.props.message}
+      </div>
+    );
+  }
 }
-		
-class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			animals: [
-				{
-					id: 1,
-					name: 'Coby',
-					breed: 'cat',
-					imageUrl: 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w'
-				},
-				{
-					id: 2,
-					name: 'kitten 1',
-					breed: 'cat',
-					imageUrl: 'https://placekitten.com/200/200'
-				},
-				{
-					id: 3,
-					name: 'kitten 2',
-					breed: 'cat',
-					imageUrl: 'https://placekitten.com/200/210'
-				}
-			]
-		};
-	}
-
-	renderAnimals = () => {
-		const { animals } = this.state;
-
-		return animals.map(animal => {
-			return (
-				<AnimalCard
-					key={animal.id}
-					name={animal.name}
-					breed={animal.breed}
-					imageUrl={animal.imageUrl}
-				/>
-			);
-		});
-	}
-
-	render() {
-		return (
-			<div className="cardsContainer">
-				{this.renderAnimals()}
-			</div>
-		);
-	}
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
 </code></pre>
-					<a href="https://codepen.io/lomemire/pen/ZqYMYL?editors=1010#0">codepen</a>
+
+<pre><code class="css">
+.messageStyles {
+  font-variant: italic;
+  font-weight: 600;
+  color: #6DC066;
+  font-size: 3em;
+}
+</code></pre>
+					<a href="https://codepen.io/lomemire/pen/ePmZRx?editors=0110">codepen</a>
 				</section>
 
 				<section>
@@ -513,20 +462,20 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 				<section>
 					<h2>Hello World with Props</h2>
-					<pre><code class="javascript">
-		class Greeting extends React.Component {
-			render() {
-				return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
-			}
-		}
-		class App extends React.Component {
-			render() {
-				const message = 'Hello World!';
-				return (&lt;Greeting message={message} /&gt;);
-			}
-		}
-		ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
-					</code></pre>
+<pre><code class="javascript">
+class Greeting extends React.Component {
+  render() {
+    return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+  }
+}
+class App extends React.Component {
+  render() {
+    const message = 'Hello World!';
+    return (&lt;Greeting message={message} /&gt;);
+  }
+}
+ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+</code></pre>
 				</section>
 
         <section>
@@ -745,7 +694,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 							Local state is managed by React.
 						</li>
 					</ul>
-				</section>
+        </section>
+        
 				<section>
 					<h2>What is <strong>state</strong>?</h2>
 					<p>Local state in a parent component can be passed down to its childen as props, as we saw in the Greeting example:</p>
@@ -1098,8 +1048,8 @@ class App extends React.Component {
 }
 </code></pre>
           <a href="https://codepen.io/lomemire/pen/WabKEW?editors=0010">codepen</a>
-				</section>
-
+        </section>
+        
         <section>
 					<p>
             We can clean up this example a bit by pulling out the mapping to its own function.
@@ -1136,7 +1086,121 @@ class App extends React.Component {
   }
 }
 </code></pre>
-				</section>
+        </section>
+
+        <section>
+            <h2>Returning elements</h2>
+            <ul>
+              <li>In all the examples we've used, we're always returning a single element</li>
+              <li>
+                In React 15.x and lower, <b>you can only return a single element in a render statement</b>. 
+                If you try to render multiple items, you'll get an error something like 
+                "Adjacent JSX elements must be wrapped in an enclosing tag"
+              </li>
+              <li>
+                This changed in React 16, so if you are using that version, you can render mulitple items. Remember to wrap them in an array:
+  <pre><code class="javascript">
+  render() {
+    return [
+      <li key="1">Item 1</li>,
+      <li key="2">Item 2</li>,
+      <li key="3">Item 3</li>,
+    ];
+  }
+  </code></pre>
+              </li>
+              <li>
+                * This doesn't work for <b>ReactDOM.render</b> because you still 
+                need a single root element for the whole app.
+              </li>
+            </ul>
+  
+          </section>
+        
+        <section>
+          <h2>Stateless Components</h2>
+          <ul>
+            <li>We've seen some examples of components that have state and some that don't.</li>
+            <li>A component that doesn't maintain its own state is called a <b>stateless component</b>. 
+            <li>
+              Some other names you might hear: display, presentational, functional*, 
+              "dumb" (we'll see why they're called functional in a minute)
+            </li>
+            <li>
+              There are some advantages to using stateless components: They're easy to test, easy to 
+              understand, concise, and, in general, the less state you have floating around, the better.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Stateless Components</h2>
+          <p>We've seen this before in one of the early iterations of the Greeting component:</p>
+<pre><code class="javascript">
+    class Greeting extends React.Component {
+      render() {
+        return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+      }
+    }
+    class App extends React.Component {
+      render() {
+        const message = 'Hello World!';
+        return (&lt;Greeting message={message} /&gt;);
+      }
+    }
+    ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+</code></pre>
+        </section>
+        
+        <section>
+          <h2>Functional Stateless Components</h2>
+          <p>Stateless components can be written as functions instead of classes, which is more concise.</p>
+          <p>Note that <b>props</b> is taken in as a function argument</p>
+<pre><code class="javascript">
+const Greeting = (props) => {
+  return &lt;div&gt;{props.message}&lt;/div&gt;;
+};
+
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const message = 'Hello World';
+    return (&lt;Greeting message={message} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/rqMWyx">codepen</a>
+        </section>
+
+        <section>
+          <h2>Functional Stateless Components + Destructuring</h2>
+          <p>You can also destructure props in the function arguments</p>
+
+<pre><code class="javascript">
+const Greeting = ({ message }) => {
+  return &lt;div&gt;{message}&lt;/div&gt;;
+};
+
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const message = 'Hello World';
+    return (&lt;Greeting message={message} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/MPjbow">codepen</a>
+        </section>
 
 				<section>
             <h2>Stretch break!</h2>
