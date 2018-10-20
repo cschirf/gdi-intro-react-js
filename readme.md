@@ -34,6 +34,8 @@ Understanding of HTML and JavaScript is required. Familiarity with other JavaScr
 
 - Common lifecycle methods, different classification of components
 
-- Best practices and project tips
+- Common anti-patterns w/ State & Props
+
+- Best practices, project tips, resources, creating an app with create-react-app
 
 - Project/Workshop time
