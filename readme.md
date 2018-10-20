@@ -1,6 +1,8 @@
 # Introduction to React.js
 
-Slides and materials are hosted at [https://github.com/arilaen/intro-to-react-js](https://github.com/arilaen/gdi-intro-react-js).
+Slides and materials in this GH repo
+
+<!-- Slides and materials are hosted at [https://github.com/arilaen/intro-to-react-js](https://github.com/arilaen/gdi-intro-react-js). -->
 
 ## Course description
 
@@ -17,9 +19,9 @@ Understanding of HTML and JavaScript is required. Familiarity with other JavaScr
 
 - Laptop and charger
 
-- A free CodePen account
+- A free CodePen account (Optional)
 
-- A text editor, such as Atom or SublimeText (both available for free)
+- A text editor, such as Atom or SublimeText or IDE of your choice
 
 - Google Chrome with the React Developer Tools extension installed
 
