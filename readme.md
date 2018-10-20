@@ -8,21 +8,6 @@ React is a popular front-end JavaScript framework. Companies like Facebook, Airb
 
 This series will introduce you to React through hands-on exercises and give you the skills needed to integrate it into your own project.
 
-**Cost:** $90
-
-**Dates:**
-
-Monday, June 5, 6:30-8:30 PM
-
-Monday, June 12, 6:30-8:30 PM
-
-Monday, June 19, 6:30-8:30 PM
-
-Monday, June 26, 6:30-8:30 PM
-
-**Location:**
-
-District Hall, 75 Northern Ave, Boston, MA
 
 ### Prerequisites:
 
@@ -41,10 +26,14 @@ Understanding of HTML and JavaScript is required. Familiarity with other JavaScr
 
 ### Topics covered:
 
-- Learn when React makes sense to use in a JavaScript project
+- Components, JSX, styles
 
-- Learn how React works and what sets it apart from other JavaScript frameworks through hands-on coding exercises
+- Props, State, React's state model
 
-- Start using the latest and greatest version of JavaScript, ES6 (ECMAScript 6, aka ES2015)
+- Forms, Synthetic Events
 
-- Build your own React projects
+- Common lifecycle methods, different classification of components
+
+- Best practices and project tips
+
+- Project/Workshop time
