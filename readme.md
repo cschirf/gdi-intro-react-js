@@ -34,6 +34,8 @@ Understanding of HTML and JavaScript is required. Familiarity with other JavaScr
 
 - Forms, Synthetic Events
 
+- Asynchronous changes and setState
+
 - Common lifecycle methods, different classification of components
 
 - Common anti-patterns w/ State & Props
