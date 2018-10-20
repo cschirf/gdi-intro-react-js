@@ -18,12 +18,16 @@
   <link rel="stylesheet" href="dist/css/default.css" id="theme">
 
   <!-- For syntax highlighting -->
-  <!-- light editor <link rel="stylesheet" href="dist/css/light.css">-->
-  <!-- dark editor -->
-  <link rel="stylesheet" href="dist/css/dark.css">
-  <!-- <link rel="stylesheet" href="dist/css/zenburn.css"> -->
+  <!-- <link rel="stylesheet" href="dist/css/light.css"> -->
+  <!-- <link rel="stylesheet" href="dist/css/dark.css"> -->
+  <!-- <link rel="stylesheet" href="dist/css/prism-dark.css"> -->
+  <link rel="stylesheet" href="dist/css/prism-okaidia.css">
+  <link rel="stylesheet" href="dist/css/overrides.css">
+  <!-- <link rel="stylesheet" href="dist/css/monokai-sublime.css"> -->
 
   <link rel="stylesheet" href="plugin/accessibility-helper/css/accessibility-helper.css">
+
+  <!-- <script src="plugin/highlight2/highlight.pack.js"></script> -->
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
@@ -51,16 +55,206 @@
       <section>
           <img src="dist/img/circle-gdi-logo.png" alt="GDI Logo" class="noborder"/>
 					<h1>Introduction to React.js</h1>
-					<h2>Part 3: </h2>
+					<h2>Part 3: Workshop and project tips</h2>
 					<p>
 						<small>Found at <a href ="https://github.com/cschirf/gdi-intro-react-js">github</a>.</small>
 					</p>
+      </section>
+
+      <section>
+        <h1>Helpful random things you might need to know</h1>
+      </section>
+
+      <section>
+        <h2>Conditionally show a component</h2>
+<pre><code class="language-jsx">
+render() {
+  return (
+    <div>
+      {!!hasErrorMessage && &lt;ErrorBar message="You done messed up" /&gt;}
+    </div>
+  );
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Ternary Operator</h2>
+<pre><code class="language-jsx">
+render() {
+  return (
+    &lt;div&gt;
+      {!!hasItems ? &lt;DisplayComponent items={items} /&gt; : &lt;EmptyState /&gt;}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Default Props</h2>
+        <p>A component can also set its own default props:</p>
+<pre><code class="language-javascript">
+import React from 'react';
+
+// Props:
+//    * name - string
+//    * price - number
+//    * color - string
+class TeddyBear extends React.Component {
+  ...
+}
+
+TeddyBear.defaultProps = {
+  price: 12.99,
+  color: 'brown'
+};
+
+// Alternative syntax that does exactly the same thing:
+class TeddyBear extends React.Component {
+  static defaultProps = {
+    price: 12.99,
+    color: 'brown'
+  };
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>PropTypes</h2>
+        <p>
+          You can document and check that the props your component has received matches what 
+          it expects using PropTypes. PropTypes are checked at run time.
+        </p>
+<pre><code class="language-jsx">
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class TeddyBear extends React.Component {
+  ...
+}
+
+TeddyBear.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.number,
+  color: PropTypes.string
+};
+
+// Alternative syntax that does exactly the same thing:
+class TeddyBear extends React.Component {
+  static propTypes = {
+    name: PropTypes.string,
+    price: PropTypes.number,
+    color: PropTypes.string
+  };
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Pure functions</h2>
+        <p class="keyword-definition">
+            <i>\ˈpyu̇r ˈfəŋ(k)-shən\</i> &mdash; A function where the return value is only determined by its input values, 
+            without observable side effects. Given the same input, it will always return the same output.
+        </p>
+        <p>
+          This will be more important when learning Redux, but you can apply this to any React devving you do.
+        </p>
+<pre><code class="language-javascript">
+// i am pure
+const appendBazinga = sickBurnInput => {
+  return sickBurnInput + ' Bazinga!';
+};
+
+// i am not pure
+const appendBazinga = sickBurnInput => {
+  sickBurnInput = sickBurnInput + ' Bazinga!';
+};
+</code></pre>
+      </section>
+
+      <section>
+        <h2>Best Practices</h2>
+        <ul>
+          <li>
+            <b>Composition over Interitance:</b> Instead of creating components that extend one 
+            another, it's more maintainable to create container components that are composed of children components. 
+            This is the pattern we've been using all through this course and is an offical React best practice.
+          </li>
+          <li>
+            <b>Push state as high up as possible: </b> Children components should be responsible 
+            for as little state as possible and rely on taking in props from their parent. This is also true
+            for Flux/Redux&mdash; try to keep children components unconnected when possible and take actions
+            as props from their parent.
+          </li>
+          <li>
+            <b>Single source of truth: </b> For any piece of data, only one component should "own" its value.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Testing</h2>
+        <ul>
+          <li>
+            Industry standard for testing in React is Jest and Enzyme (they are 2 separate libraries).
+            <ul>
+              <li><a href="https://jestjs.io/">Jest</a> is kind of like a test runner library. It includes support for snapshot tests.</li>
+              <li><a href="https://airbnb.io/enzyme/">Enzyme</a> is a library that makes rendering and manipulating components easier.</li>
+            </ul>
+          </li>
+          <li>Sometimes you may see one but not the other (for example, Enzyme with Karma and Jasmine)</li>
+          <li>
+            You may still see ReactTestRenderer and ReactTestUtils, especially in older code bases. 
+            These are the original testing libraries that React came out with.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Helpful libraries and resources</h2>
+        <ul>
+          <li><a href="https://devhints.io/react">React DevHints</a></li>
+          <li><a href="https://yarnpkg.com/en/">Yarn</a> - deterministic dependency management</li>
+          <li><a href="https://webpack.js.org/">Webpack</a> - industry standard for building React apps</li>
+          <li><a href="https://reacttraining.com/react-router/">React Router</a> - popular routing library</li>
+          <li><a href="https://momentjs.com/">Moment.js</a> - popular library for dealing with dates and times</li>
+          <li><a href="https://github.com/gajus/react-css-modules">CSS Module</a> - library for managing styles in a large React code base</li>
+          <li><a href="https://www.styled-components.com/">Styled Components</a> - another library for dealing with styles in a large repo</li>
+          <li><a href="http://bluebirdjs.com/docs/getting-started.html">Bluebird</a> - for promises</li>
+          <li><a href="https://github.com/visionmedia/superagent">Superagent</a> - for promises</li>
+          <li><a href="https://github.com/visionmedia/superagent">Immutable.js</a> - for immutability</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Starting your own project</h2>
+        <p>
+          There are different ways to start a React app, but the simplest is to use Facebooks's 
+          <a href="https://github.com/facebook/create-react-app">create-react-app</a>
+        </p>
+<pre><code class="language-bash">
+# all of these do the same thing
+
+# with npx
+npx create-react-app my-app
+cd my-app
+npm start
+
+# with npm
+npm init react-app my-app
+
+# with yarn
+yarn create react-app my-app
+</code></pre>
       </section>
     </div>
   </div>
 
   <script src="dist/js/head.min.js"></script>
   <script src="dist/js/reveal.min.js"></script>
+  <script src="plugin/prism/prism.js"></script>
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
   <script>
 
@@ -79,7 +273,7 @@
         { src: 'dist/js/classList.js', condition: function () { return !document.body.classList; } },
         { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
         { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-        { src: 'plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
+        // { src: 'plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true },
         { src: 'plugin/notes/notes.js', async: true },
         { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function () { return !!document.body.classList; } }

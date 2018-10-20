@@ -1,4 +1,4 @@
-<!-- lifecycle methods, forms, synethic events, different kinds of components  -->
+<!-- lifecycle methods, forms, synthetic events, different kinds of components  -->
 
 <!doctype html>
 <html lang="en">
@@ -18,9 +18,10 @@
   <link rel="stylesheet" href="dist/css/default.css" id="theme">
 
   <!-- For syntax highlighting -->
-  <!-- light editor <link rel="stylesheet" href="dist/css/light.css">-->
-  <!-- dark editor -->
-  <link rel="stylesheet" href="dist/css/dark.css">
+  <!-- <link rel="stylesheet" href="dist/css/light.css">-->
+  <!-- <link rel="stylesheet" href="dist/css/dark.css"> -->
+  <link rel="stylesheet" href="dist/css/prism-okaidia.css">
+  <link rel="stylesheet" href="dist/css/overrides.css">
   <!-- <link rel="stylesheet" href="dist/css/zenburn.css"> -->
 
   <link rel="stylesheet" href="plugin/accessibility-helper/css/accessibility-helper.css">
@@ -51,12 +52,120 @@
       <section>
           <img src="dist/img/circle-gdi-logo.png" alt="GDI Logo" class="noborder"/>
 					<h1>Introduction to React.js</h1>
-					<h2>Part 2: Forms and lifecycle methods</h2>
+					<h2>Part 2: Forms, lifecycle methods, component types</h2>
 					<p>
 						<small>Found at <a href ="https://github.com/cschirf/gdi-intro-react-js">github</a>.</small>
 					</p>
       </section>
-      
+
+      <section>
+        <h1>Stateless v Stateful components</h1>
+      </section>
+
+      <section>
+        <h2>Stateful components</h2>
+        <p>
+          Stateful components are the ones we're primarily familiar with. 
+          Here are some other names you might hear them called: container, smart, "regular"
+        </p>
+      </section>
+
+      <section>
+          <h2>Stateless Components</h2>
+          <ul>
+            <li>We've seen some examples of components that have state and some that don't.</li>
+            <li>A component that doesn't maintain its own state is called a <b>stateless component</b>. 
+            <li>
+              Some other names you might hear: display, presentational, functional*, 
+              "dumb" (we'll see why they're called functional in a minute)
+            </li>
+            <li>
+              There are some advantages to using stateless components: They're easy to test, easy to 
+              understand, concise, and, in general, the less state you have floating around, the better.
+            </li>
+            <li>These components used to go by the name pure, as well, but now React has a formal 
+              component type called PureComponent, which we'll talk about in a bit.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Stateless Components</h2>
+          <p>We've seen this before in one of the early iterations of the Greeting component:</p>
+<pre><code class="language-jsx">
+class Greeting extends React.Component {
+  render() {
+    return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+  }
+}
+
+class App extends React.Component {
+  render() {
+    const message = 'Hello World!';
+    return (&lt;Greeting message={message} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+</code></pre>
+        </section>
+        
+        <section>
+          <h2>Functional Stateless Components</h2>
+          <p>Stateless components can be written as functions instead of classes, which is more concise.</p>
+          <p>Note that <b>props</b> is taken in as a function argument</p>
+<pre><code class="language-jsx">
+/* compare to:
+class Greeting extends React.Component {
+  render() {
+    return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+  }
+}
+*/
+const Greeting = (props) => {
+  return &lt;div&gt;{props.message}&lt;/div&gt;;
+};
+
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const message = 'Hello World';
+    return (&lt;Greeting message={message} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/rqMWyx">codepen</a>
+        </section>
+
+        <section>
+          <h2>Functional Stateless Components + Destructuring</h2>
+          <p>You can also destructure props in the function arguments</p>
+
+<pre><code class="language-jsx">
+const Greeting = ({ message }) => {
+  return &lt;div&gt;{message}&lt;/div&gt;;
+};
+
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const message = 'Hello World';
+    return (&lt;Greeting message={message} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+          <a href="https://codepen.io/lomemire/pen/MPjbow">codepen</a>
+        </section>
+
       <section>
         <h1>React Forms 101</h1>
       </section>
@@ -79,7 +188,7 @@
             <li>When the input changes, handle the state change in your own function, which you'll call from <strong>onChange</strong></li>
             <li>You'll be calling <b>setState</b> in that handle change function</li>
 						<li>Examples: 
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 const handleChange = (event) => {
   // maybe do some error handling and validation
   // then persist the change
@@ -87,7 +196,7 @@ const handleChange = (event) => {
 };
 </code></pre>
 
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 &lt;input type="text" value={this.state.value} onChange={this.handleChange} /&gt;
 </code></pre>
             </li>
@@ -116,7 +225,7 @@ const handleChange = (event) => {
           <ul>
             <li>
               Remember this dude?
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 const handleChange = (event) => {
   this.setState({ value: event.target.value });
 };
@@ -154,7 +263,7 @@ const handleChange = (event) => {
 
         <section>
           <h2>Example Implementation</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class Greeting extends React.Component {
   constructor() {
     super();
@@ -217,27 +326,454 @@ class Greeting extends React.Component {
               <blockquote style="width: 100%;">
                 Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
               </blockquote>
-
             </li>
-            <li></li>
-            <!-- <li>But sometimes, we want to </li> -->
+            <li>Most of the time, calling <b>setState</b> with an object works just fine, but there are times where you need to look at the old state to calculate the new state</li>
+            <li>Can you think of some examples?</li>
             <li><a href="https://medium.com/@wisecobbler/using-a-function-in-setstate-instead-of-an-object-1f5cfd6e55d1">More info</a></li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Asynchronous changes and setState</h2>
+          <p>Toggling a checkbox is a good example of where you need to use the previous state to determine the next state.</p>
+          <p>This is the naive example:</p>
+<pre><code class="language-jsx">              
+this.setState({ isChecked: !this.state.isChecked });
+</code></pre>
+          <p>
+            If a user clicks the checkbox a lot or if there is a delay, 
+            then the state can get out of sync because we are using a 
+            stale version of <b>state</b> to update <b>isChecked</b>.
+          </p>
+          <p>To avoid this, we can send a function to setState, which takes the previousState as an argument.</p>
+<pre><code class="language-jsx">              
+this.setState(prevState => {
+  return { isChecked: !prevState.isChecked };
+});
+</code></pre>
+          <p>Other common examples: show/hide toggles, selected toggles, updating sets or lists</p>
+        </section>
+        
+        <section>
+          <h2>setState + callbacks</h2>
+          <p style="text-align: left;">What do you think would happen here?</p>
+  <pre><code class="language-jsx">              
+  handleChange = (newInfo) => {
+    this.setState({ myVar: newInfo });
+    updateServer(this.state.value);
+  };
+  </code></pre>
+          <p class="fragment" style="text-align: left;">
+            We can't guarantee that the state will be set correctly before <b>updateServer</b> 
+            is called, so we might be 'updating' the server with the old value.
+          </p>
+          <p class="fragment" style="text-align: left;">Callbacks to the rescue! We can send a callback to setState like so:</p>
+<pre class="fragment"><code class="language-jsx">              
+handleChange = (newInfo) => {
+  this.setState({ myVar: newInfo }, updateServer(this.state.value));
+};
+</code></pre>
+            <p class="fragment" style="text-align: left;">With this approach, <b>updateServer</b> will only be called <em>after</em> the new value of myVar is set.</p>
+            <p class="fragment" style="text-align: left;">Note: The developers of React suggest using lifecycle hooks instead whenever possible</p>
           <aside class="notes">
             do ppl know what a callback is?
           </aside>
         </section>
 
-        <!-- setState(updater[, callback]) -->
+        <section>
+          <h1>Lifecycle Methods (Hooks)</h1>
+        </section>
 
+        <section>
+          <h4>React 15.x and lower</h4>
+          <div>
+            <img src="imgs/react-lifecycle-hooks-diagram--full.jpg" style="max-width: none; max-height: none; height: 72vh;" />
+          </div>
+          <a href="https://levelup.gitconnected.com/componentdidmakesense-react-lifecycle-explanation-393dcb19e459">source</a>
+        </section>
+
+        <section>
+          <h2>Set Up & Tear Down</h2>
+        </section>
+
+        <section>
+          <h2>componentWillMount*</h2>
+          <ul>
+            <li>Uncommon</li>
+            <li>This is only called one time: before the component is rendered to the screen. Some things to keep in mind:</li>
+            <ul>
+                <li>The component isn't on the screen yet. There is no DOM.</li>
+                <li>You can't call setState here because there is no state because the component isn't real yet.</li>
+            </ul>
+            <li>This is <em>not</em> where you want to make API calls.</li>
+            <li>This is also not where you want to set your default state. That is what the constructor is for.</li>
+            <li>You may see this used for setting up some kind of app configuration (like setting up Flux/Redux store, which should only happen in the root component).</li>
+            <li>* <em>This hook is deprecated in 16.x and should not be used in new code. It will be removed in version 17.</em></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>componentDidMount</h2>
+          <ul>
+            <li><b>Common</b></li>
+            <li>This is called only once: immediately after the component is first mounted, i.e. inserted into the DOM</li>
+            <li>
+              You can call setState here! But if you don't need to, then don't. 
+              It will cause an extra render and may cause performance issues if used with wild abandon.
+            </li>
+            <li><b>You will often see this hook used to make API requests.</b></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>componentWillUnmount</h2>
+          <ul>
+            <li>This is called only once: immediately before the component is unmounted, i.e. removed from the DOM, and destroyed</li>
+            <li>I guess you could call setState here, but the component is going to be destroyed in a hot sec so&hellip;</li>
+            <li>You may see this used to: clean up subscriptions, cancel network calls, invalidating timers, and in general, doing last minute clean up tasks.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Hooks for reacting to state and prop changes</h2>
+        </section>
+
+        <section>
+          <h2>componentDidUpdate</h2>
+          <ul>
+            <li>Use this if you need to do something if the component's state or props has changed (e.g. make a network request)</li>
+            <li>Invoked immediately after updating occurs</li>
+            <li>Not called on initial render</li>
+            <li><b><em>Always wrap any logic in a condition that checks if state and/or props has changed. If you don't, you will create an infinite loop.</em></b></li>
+            <li>Sometimes you will see this used to copy new props to state, but know that is considered an anti-pattern in React.</li>
+            <li>Here are some contrived examples:</li>
+          </ul>
+<pre><code class="language-jsx">
+componentDidUpdate(prevProps, prevState) {
+  if (this.props.userId !== prevProps.userId) {
+    fetchUserInfoFromServerForId(this.props.userId);
+  }
+}
+
+componentDidUpdate(prevProps, prevState) {
+  if (this.state !== prevState) {
+    this.autosaveUpdates();
+  }
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h2>componentWillReceiveProps*</h2>
+          <ul>
+              <li>Common</li>
+              <li>You may see this used:
+                <ul>
+                  <li>
+                    to copy new props to state or "reset" state from props, 
+                    but know this is an anti-pattern. If you really need to do this, though, 
+                    React 16 has a new hook <b>getDerivedStateFromProps</b>
+                  </li>
+                  <li>to perform a side effect when props change. React suggests moving that logic to compnentDidUpdate</li>
+                </ul>
+              <li>If you are using this, make sure to check for the prop change you are looking for</li>
+              </li>
+              <li>* <em>This hook is deprecated in 16.x and should not be used in new code. It will be removed in version 17.</em></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>getDerivedStateFromProps**</h2>
+          <ul>
+            <li>Used to set local component state from props information</li>
+            <li>Should be used in rare instances where the current state relies on previous state (e.g. infinite scrolling)</li>
+            <li>There are often better alternatives to using this hook, like creating fully controlled components.</li>
+            <li>Default is to return <b>null</b>, which means don't update state</li>
+            <li>Is called on initial render and fired on every subsequent render, regardless of the cause</li>
+            <li>This component should return an object representing changes to state, which will be merged into the existing state (similar to <b>setState</b>)</li>
+            <li>** <em>This hook is available in React 16.3+.</em></li>
+          </ul>
+        </section>
+
+        <section>
+            <h2>getDerivedStateFromProps**</h2>
+  <pre><code class="language-jsx">
+  getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.currentRow === prevState.lastRow) {
+      return null; //the user's position hasn't changed so there's nothing to do
+    }
+  
+    return {
+      lastRow: nextProps.currentRow,
+      isScrollingDown: nextProps.currentRow > prevState.lastRow
+    };
+  }
+  </code></pre>
+            <a href="https://twitter.com/dan_abramov/status/960305777968930816?lang=en">code from dan abramov</a>
+          </section>
+
+        <section>
+          <h2>componentWillUpdate*</h2>
+          <ul>
+              <li>Lets you do things before a component updates.</li>
+              <li>You should not call setState here because it will cause another render.</li>
+              <li>You may see this used to hold onto previous state information (e.g. scroll position). 
+                In React 16, you can use <b>getSnapshotBeforeUpdate</b> for this purpose. </li>
+              <li>Most other uses of componentWillUpdate can be replaced by componentDidUpdate</li>
+              <li>* <em>This hook is deprecated in 16.x and should not be used in new code. It will be removed in version 17.</em></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Lesser Used Hooks</h2>
+        </section>
+
+        <section>
+          <h2>componentShouldUpdate</h2>
+          <ul>
+            <li>Used for performance optimization</li>
+            <li>You can check some condition and return true or false for whether or not the component should be re-rendered:
+<pre><code class="language-none">
+  Use shouldComponentUpdate() to let React know if a component’s output is not affected 
+  by the current change in state or props. The default behavior is to re-render on 
+  every state change, and in the vast majority of cases you should rely on the default behavior.
+</code></pre>
+            </li>
+            <li>Defaults to true</li>
+            <li>Not called for the initial render or when forceUpdate() is used</li>
+            <li>Affects whether or not componentDidUpdate is called</li>
+            <li>React recommends using a PureComponent instead</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>Rare hooks</h2>
+          <ul>
+            <li><b>getSnapshotBeforeUpdate</b> - lets you capture some information in your component before new props are received</li>
+            <li><b>componentDidCatch</b> - for handling unexpected exceptions</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>props + state, part 2</h1>
+          <aside class="notes">
+            The changes in React 16.3 are largely about avoiding bugs stemming from 
+            overriding state with props. So let's take a deeper dive into what two common 
+            anti patterns are and better ways of solving those use cases.
+
+            https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization
+          </aside>
+        </section>
+
+        <section>
+          <h2>Anti Pattern 1: Unconditionally copying Props to State</h2>
+        </section>
+
+        <section>
+          <ul>
+            <li><b>getDerivedStateFromProps</b> and <b>componentWillReceiveProps</b> are called every time the parent re-renders</li>
+            <li>That means that props may or may not be different</li>
+            <li>
+              What do you think will happen here?
+<pre><code class="language-jsx">
+class EmailInput extends Component {
+  state = { email: this.props.email };
+
+  render() {
+    return &lt;input onChange={this.handleChange} value={this.state.email} /&gt;;
+  }
+
+  handleChange = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ email: nextProps.email });
+  }
+}
+</code></pre>
+            </li>
+          </ul>
+          <a href="https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization">code from React blog</a>
+        </section>
+
+        <section>
+        <p>Every time the parent re-renders, any changes the user has made to the <b>email</b> field will be lost.</p>
+
+<pre><code class="language-jsx">
+class EmailInput extends Component {
+  state = { email: this.props.email };
+
+  render() {
+    return &lt;input onChange={this.handleChange} value={this.state.email} /&gt;;
+  }
+
+  handleChange = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  componentWillReceiveProps(nextProps) {
+    // This will erase any local state updates!
+    // Do not do this.
+    this.setState({ email: nextProps.email });
+  }
+}
+</code></pre>
+
+          <a href="https://codesandbox.io/s/m3w9zn1z8x">live demo</a>
+        </section>
+
+        <section>
+          <h2>Anti Pattern 1: Erasing state when props change</h2>
+        </section>
         
+        <section>
+          <p>Aha! I hear you cry. What if we check that the email changed?</p>
+<pre><code class="language-jsx">
+class EmailInput extends Component {
+  state = {
+    email: this.props.email
+  };
+
+  componentWillReceiveProps(nextProps) {
+    // Any time props.email changes, update state.
+    if (nextProps.email !== this.props.email) {
+      this.setState({
+        email: nextProps.email
+      });
+    }
+  }
+  
+  // ...
+}
+</code></pre>
+          <p>What are some pitfalls of this approach?</p>
+          <a href="https://codesandbox.io/s/mz2lnkjkrx">live demo</a>
+        </section>
+
+        <section>
+          <p>The core issue in both cases is that there isn't a <b>single source of truth</b> for the value of email.</p>
+
+          <p>Here are some better solutions</p>
+        </section>
+
+        <section>
+          <h2>Fully controlled component</h2>
+          <p>The parent handles all state changes and EmailInput is a stateless component that 
+            just displays whatever it gets in props (<b>parent component is the source of truth</b>).</p>
+<pre><code class="language-jsx">
+export default function ControlledEmailInput(props) {
+  // The parent component is responsible for managing both
+  // the "commited" and "draft" email states. It tells this component
+  // which one to display by passing props.email.
+  return (
+    &lt;label&gt;
+      Email: &lt;input value={props.email} onChange={props.handleChange} /&gt;
+    &lt;/label&gt;
+  );
+}
+
+class Parent extends Component {
+  state = {
+    draftEmail: this.props.user.email
+  };
+
+  handleEmailChange = event => {
+    this.setState({ draftEmail: event.target.value });
+  };
+
+  resetForm = () => {
+    this.setState({
+      draftEmail: this.props.user.email
+    });
+  };
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;ControlledEmailInput
+          email={this.state.draftEmail}
+          handleChange={this.handleEmailChange}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+          <a href="https://codesandbox.io/s/7154w1l551">live demo</a>
+        </section>
+
+        <section>
+            <h2>Fully uncontrolled component with key</h2>
+            <ul>
+              <li><b>The child component is the source of truth</b></li>
+              <li>The parent sends down the initial value for email but the child component is responsible for the current value.</li>
+              <li>The child never re-reads the value from props.</li>
+              <li>
+                The parent creates the child component with a key value. If the keys are different, 
+                it tells React to create a new component rather than update an existing one.
+              </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Fully uncontrolled component with key</h2>
+<pre><code class="language-jsx">
+class EmailInput extends Component {
+  state = { email: this.props.defaultEmail };
+
+  handleChange = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  render() {
+    return &lt;input onChange={this.handleChange} value={this.state.email} /&gt;;
+  }
+}
+
+&lt;EmailInput
+  defaultEmail={this.props.user.email}
+  key={this.props.user.id}
+/&gt;
+</code></pre>
+            <a href="https://codesandbox.io/s/6v1znlxyxn">live demo</a>
+            <aside class="notes">
+              In this example, if the user id has changed, then the input form will be recreated.
+            </aside>
+        </section>
+
+        <section>
+           <h2>Pure Components</h2>
+           <ul>
+             <li>React formalized the concept of a pure (e.g. display) component into PureComponent and added a little performance boost.</li>
+             <li>Because PureComponents are stateless, they only should re-render if their props actually change (not just when the parent re-renders).</li>
+             <li>By default, React.Component sets shouldComponentUpdate to true (so the component will re-render when the parent re-renders)</li>
+             <li>
+               In React.PureComponent, shouldComponentUpdate defaults to doing a (shallow) comparison of the current and next props: 
+<pre><code class="language-jsx">
+if (type.prototype && type.prototype.isPureReactComponent) {
+  shouldUpdate = !shallowEqual(oldProps, props) ||
+                  !shallowEqual(oldState, state);
+}
+</code></pre>
+             </li>
+             <li><a href="http://lucybain.com/blog/2018/react-js-pure-component/">Great blog post for more info</a></li>
+           </ul>
+         </section>
+
+         <section>
+            <h2>Stretch break</h2>
+            <img src="imgs/pug-dog-stretching.gif" alt="puppers!" style="height: 40vh;" />
+        </section>
     </div>
   </div>
 
   <script src="dist/js/head.min.js"></script>
   <script src="dist/js/reveal.min.js"></script>
-  <script>
+  <script src="plugin/prism/prism.js"></script>
 
+  <script>
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
@@ -253,7 +789,7 @@ class Greeting extends React.Component {
         { src: 'dist/js/classList.js', condition: function () { return !document.body.classList; } },
         { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
         { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-        { src: 'plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
+        // { src: 'plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true },
         { src: 'plugin/notes/notes.js', async: true },
         { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function () { return !!document.body.classList; } }

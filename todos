@@ -1,14 +1,15 @@
 * better diagram of simple state flow
 * CHECK tell students that you can only return one DOM element in React unless you're using v 16
-* controlled v uncontrolled components
-* synthetic events
+* CHECK controlled v uncontrolled components
+* CHECK synthetic events
 * CHECK display (dumb/stateless) components v reg components
 * CHECK functional syntax for dumb components 
-* pure components
+* CHECK pure components
 * CHECK deconstructing vars (props, state)
-* conditional displaying of component {condition && <Component />}
-* prop types
-* composition v. inheritance **
+* CHECK conditional displaying of component {condition && <Component />}
+* CHECK prop types
+* CHECK composition v. inheritance
+* child components (not self closing tag)
 
 
 * best practices

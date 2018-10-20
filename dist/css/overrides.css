@@ -1,0 +1,35 @@
+.container--multicolumn {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+pre[class*="language-"] {
+  line-height: 1 !important;
+  padding: 0.5em !important;
+  max-height: 50vh !important;
+  overflow: scroll;
+}
+
+pre[class*="language-"] code {
+  font-size: 0.9em !important;
+}
+
+.keyword-definition {
+  /* font-style: italic !important; */
+  padding: 0.25em !important; 
+  background-color: #4c4c4c !important; 
+  color: #ffffff !important;
+  /* border-radius: 30% !important;
+    -webkit-border-radius: 30% !important;
+    -moz-border-radius: 30% !important;
+  background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+    -moz-background-clip: padding !important; */
+}
+
+/* code .code--small {
+  font-size: 0.75em !important;
+} */
+
+/* .container--even-width-column {} */

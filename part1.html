@@ -14,10 +14,12 @@
 
 		<link rel="stylesheet" href="dist/css/reveal.css">
 		<link rel="stylesheet" href="dist/css/default.css" id="theme">
+		<link rel="stylesheet" href="dist/css/overrides.css">
 
 		<!-- For syntax highlighting -->
 		<!-- light editor <link rel="stylesheet" href="dist/css/light.css">-->
-		<!-- dark editor --><link rel="stylesheet" href="dist/css/dark.css">
+    <!-- <link rel="stylesheet" href="dist/css/dark.css"> -->
+    <link rel="stylesheet" href="dist/css/prism-okaidia.css">
 		<!-- <link rel="stylesheet" href="dist/css/zenburn.css"> -->
 
 		<link rel="stylesheet" href="plugin/accessibility-helper/css/accessibility-helper.css">
@@ -43,7 +45,6 @@
 	</head>
 
 	<body>
-
 		<div class="reveal">
 			<div class="slides">
         <!-- Opening -->
@@ -54,7 +55,8 @@
 					<p>
 						<small>Found at <a href ="https://github.com/cschirf/gdi-intro-react-js">github</a>.</small>
 					</p>
-				</section>
+        </section>
+        
 				<section>
 					<h2>Heads Up</h2>
 					<p>
@@ -66,7 +68,16 @@
               <li>Help each other</li>
               <li>Have fun</li>
           </ul>
-				</section>
+        </section>
+        
+        <section>
+          <h3>Thank you for flying with Girl Develop It. <br/>Your gorgeous crew today is:</h3>
+          <ul>
+            <li>Instructor: Lenna</li>
+            <li>TA: Leora</li>
+            <li>TA: Mateo (workshop)</li>
+          </ul>
+        </section>
 
 				<section>
 					<h2>Introductions</h2>
@@ -91,9 +102,9 @@
 				<section>
 					<h2>You should have:</h2>
 					<ul>
-							<li>A <a href="https://codepen.io">Codepen account</a></li>
-							<li>A text editor (<a href="https://atom.io">Atom</a>, <a href="https://sublimetext.com">Sublime Text</a>) or IDE</li>
-							<li>Google Chrome with <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a></li>
+							<li>A modern browser. We strongly recommend Google Chrome with <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Developer Tools</a></li>
+							<li>A text editor (<a href="https://atom.io">Atom</a>, <a href="https://sublimetext.com">Sublime Text</a>) or an IDE</li>
+              <li>Optional: A <a href="https://codepen.io">Codepen account</a></li>
 					</ul>
 				</section>
 
@@ -115,7 +126,8 @@
 						<li><a href="https://facebook.github.io/react/">React Docs</a></li>
 						<li><a href="https://www.codecademy.com/learn/react-101">Codecademy courses</a></li>
 						<li><a href="https://www.codeschool.com/courses/powering-up-with-react">Codeschool course</a></li>
-						<li><a href="https://egghead.io/courses/start-using-react-to-build-web-applications">Egghead: Start Using React to Build Web Applications</a></li>
+            <li><a href="https://egghead.io/courses/start-using-react-to-build-web-applications">Egghead: Start Using React to Build Web Applications</a></li>
+            <li><a href-"http://lucybain.com/blog/2016/react-state-vs-pros/">Lucy Bain's blog</a></li>
 						<li><a href="https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer/#learn-react-js">And many more here</a></li>
 					</ul>
 				</section>
@@ -142,7 +154,7 @@
 						<li>Easy to understand and maintain at scale</li>
 						<li>Flexibility&mdash; can be used with your favorite logic/routing libraries. (But React router is great)</li>
 						<li>In fact, it's so flexible that it can be used on the server side as well as the client side (for isomorphic apps)!</li>
-						<li>And of course it can be used for cross-platform mobile development with React Native</li>
+						<li>And of course it can be used for cross-platform mobile development with React Native *</li>
 					</ul>
 
 					<aside class="notes">
@@ -150,7 +162,15 @@
 							Fast&emdash; hella fast bc of virtual dom & efficient state management
 						</li>
 					</aside>
-				</section>
+        </section>
+        
+        <section>
+          <h2>What React does not do</h2>
+          <ul>
+            <li>React by itself does not manage global state&mdash; you&rsquo;ll need something like Redux or Flux for that</li>
+            <li>React is not a framework. It is a lightweight library (so it only comes with the basics).</li>
+          </ul>
+        </section>
 
 				<section>
 					<h2>Should I use React?</h2>
@@ -159,14 +179,6 @@
 						<li>Also great if you want to use vanilla JS and ES6, rather than learn a new DSL (domain specific language)</li>
 						<li>May be overkill for very small, static sites, since it requires more explicit code than other frameworks</li>
 						<li>Some people prefer to keep JS and HTML separate (and prefer Vue or AngularJS) - but don't knock JSX until you've tried it!</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3>What React does not do</h3>
-					<ul>
-						<li>React by itself does not manage global state&mdash; you&rsquo;ll need something like Redux or Flux for that</li>
-						<li>React is not a framework. It is a lightweight library (so it only comes with the basics).</li>
 					</ul>
 				</section>
 
@@ -182,14 +194,14 @@
 				</section>
 
 				<section>
-					<h4>What is a <strong>Component</strong>?</h4>
+					<h2>What is a <strong>Component</strong>?</h2>
 					<ul>
 						<li>Components are the building blocks of React</li>
 						<li>You connect components together to build an appliation, kind of like stacking legos</li>
 						<li>They are classes that extend React.Component</li>
 						<li>They always implement a render function, which outputs HTML</li>
 					</ul>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class Greeting extends React.Component {
 		  render() {}
 		}
@@ -197,15 +209,14 @@
 				</section>
 
 				<section>
-					<h4>What is a <strong>Class</strong>?</h4>
+					<h2>What is a <strong>Class</strong>?</h2>
 					<ul>
 						<li>A class is a new Javascript feature, added in ES6 (ECMA2015).</li>
 						<li>It is literally a function with syntatic sugar, that behaves similarly to classes in object-oriented languages (like Java).</li>
 						<li>A class can have a constructor function, which is run on initialization.</li>
 						<li>A class can extend another class with the "extends" keyword. If it does so, it's constructor needs to use the word super().</li>
-						<li><em>We'll review all of this later!</em></li>
 					</ul>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class Greeting extends React.Component {
 			constructor() {
 				super();
@@ -243,7 +254,7 @@
 				<section>
 					<h2>What is <strong>JSX</strong>?</h2>
 					<h4>Syntax - Hello World example</h4>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class Greeting extends React.Component {
 			constructor() {
 				super();
@@ -254,7 +265,7 @@
 		}
 					</code></pre>
 					<p>Now, in another component, we can use the Greeting component, with the self-closing tag:</p>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class Layout extends React.Component {
 			render() {
 				return (&lt;Greeting /&gt;);
@@ -267,7 +278,7 @@
 					<h2>What is <strong>JSX</strong>?</h2>
 					<h4>Syntax - Using JS in JSX</h4>
 					<p>Javascript can be used in JSX as long as it is surrounded by single curly braces ({}).</p>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class Greeting extends React.Component {
 			constructor() {
 				super();
@@ -293,7 +304,11 @@
 						This is usually done with <a href="https://babeljs.io">BabelJS</a>.</p>
 					<p>You can use compilation and transpiling interchangably when talking
 							about turning ES6/JSX into Javascript, although the term transpile is more common.</p>
-				</section>
+        </section>
+        
+        <section>
+          <h2>React & Performance</h2>
+        </section>
 
 				<section>
 					<h2>What is the <strong>Virtual DOM</strong>?</h2>
@@ -322,12 +337,12 @@
 							<img src="imgs/example-dom-1.png" />
 						</div>
 						<div class="container--even-width-column">
-<pre><code class="html">
+<pre><code class="language-html code--small">
 &lt;html&gt;
   &lt;head&gt;
-    <title>kittenz</title>
-    <meta ... />
-    <meta ... />
+    &lt;title>kittenz&lt;/title&gt;
+    &lt;meta ... /&gt;
+    &lt;meta ... /&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;o hai thair frend&lt;/h1&gt;
@@ -358,7 +373,7 @@
 						This is called <b>diffing</b>.
 						It takes the changes between them and applies them to the real DOM.
 						This results in less browser manipulation and faster performance.
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class Greeting extends React.Component {
 			render() {
 				return (&lt;div&gt;Hello World!&lt;/div&gt;);
@@ -388,7 +403,7 @@
 					<h2>Deconstructing the Hello World code</h2>
 					<h4>1. Generate HTML</h4>
 					<p>Create a function that represents an HTML component's state, and returns HTML in a render method</p>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		class App extends React.Component {
 		  render() {
 		    return (&lt;h1&gt;Hello world!&lt;/h1&gt;);
@@ -403,7 +418,7 @@
 					<p>
 						Update the DOM, using a diff of the virtual DOM. First argument is new HTML, second is the element to insert it in.
 					</p>
-					<pre><code class="javascript">
+					<pre><code class="language-jsx">
 		ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
 					</code></pre>
 				</section>
@@ -421,27 +436,27 @@
 						CSS classes to an element, we need to use <b>className</b>
 					</p>
 					<p>there are lots of nifty libraries to help make styles more isolated and manageable, but this will work for now</p>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class Greeting extends React.Component {
   render() {
     return (
-      <div className="messageStyles">
+      &lt;div className="messageStyles"&gt;
         {this.props.message}
-      </div>
+      &lt;/div&gt;
     );
   }
 }
 </code></pre>
 
-<pre><code class="css">
+<pre><code class="language-css">
 .messageStyles {
-  font-variant: italic;
+  font-style: italic;
   font-weight: 600;
   color: #6DC066;
   font-size: 3em;
 }
 </code></pre>
-					<a href="https://codepen.io/lomemire/pen/ePmZRx?editors=0110">codepen</a>
+					<a href="https://codepen.io/lomemire/pen/dgKXzR?editors=0110">codepen</a>
 				</section>
 
 				<section>
@@ -451,7 +466,8 @@ class Greeting extends React.Component {
 				<section>
 					<h2>What are <strong>Props</strong>?</h2>
 					<ul>
-						<li>Props are attributes passed down from one component to another</li>
+            <li>Props stands for <b>properties</b></li>
+						<li>Props are attributes or data passed down from one component to another. They are always passed down.</li>
 						<li>A component's props can be accessed through <b>this.props</b></li>
 						<li>A component's <b>props are read-only</b>.
 							Remember that functions are first class citizens in JS,
@@ -462,27 +478,29 @@ class Greeting extends React.Component {
 
 				<section>
 					<h2>Hello World with Props</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class Greeting extends React.Component {
   render() {
     return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
   }
 }
+
 class App extends React.Component {
   render() {
     const message = 'Hello World!';
     return (&lt;Greeting message={message} /&gt;);
   }
 }
+
 ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
 </code></pre>
+          <a href="https://codepen.io/lomemire/pen/ePmZRx?editors=0110">codepen</a>
 				</section>
 
         <section>
           <h1>Let's develop it!</h1>
         </section>
 
-				<!-- TODO: REMOVE STATE FROM THIS EXAMPLE, we haven't covered that yet-->
         <section>
           <h2>Animal Cards</h2>
           <ul>
@@ -504,7 +522,7 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
 
         <section>
           <h2>Here's a template for you to start from</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class AnimalCard extends React.Component {
   constructor(props) {
     super(props);
@@ -518,25 +536,24 @@ class AnimalCard extends React.Component {
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      name: 'Coby',
-      breed: 'cat',
-      imageUrl: 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w'
-    };
   }
 
   render() {
+    const name = 'Coby';
+    const breed = 'cat';
+    const imageUrl = 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w';
+    
     return (
-      <AnimalCard
-        name={this.state.name}
-        breed={this.state.breed}
-        imageUrl={this.state.imageUrl}
-        />
+      &lt;AnimalCard
+        name={name}
+        breed={breed}
+        imageUrl={imageUrl}
+      /&gt;
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
 </code></pre>
           <a href="https://codepen.io/lomemire/pen/GYgGzv?editors=0010">see it in codepen</a>
         </section>
@@ -548,7 +565,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
         <section>
           <h2>Example AnimalCard Implementation</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class AnimalCard extends React.Component {
   constructor(props) {
     super(props);
@@ -556,11 +573,50 @@ class AnimalCard extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>{this.props.name}</div>
-        <div>{this.props.breed}</div>
-        <img src={this.props.imageUrl} />
-      </div>
+      &lt;div&gt;
+        &lt;div&gt;{this.props.name}&lt;/div&gt;
+        &lt;div&gt;{this.props.breed}&lt;/div&gt;
+        &lt;img src={this.props.imageUrl} /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const name = 'Coby';
+    const breed = 'cat';
+    const imageUrl = 'https://static1.squarespace.com/static/59dbc32346c3c48d677308c3/t/59dbc95c1f318db010f7750b/1507576171942/Coby4.jpg?format=200w';
+
+    return (
+      &lt;AnimalCard
+        name={name}
+        breed={breed}
+        imageUrl={imageUrl}
+      /&gt;
+    );
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+<!-- <pre><code class="language-jsx">
+class AnimalCard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;div&gt;{this.props.name}&lt;/div&gt;
+        &lt;div&gt;{this.props.breed}&lt;/div&gt;
+        &lt;img src={this.props.imageUrl} /&gt;
+      &lt;/div&gt;
     );
   }
 }
@@ -577,18 +633,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <AnimalCard
+      &lt;AnimalCard
         name={this.state.name}
         breed={this.state.breed}
         imageUrl={this.state.imageUrl}
-        />
+        /&gt;
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
-</code></pre>
-          <a href="https://codepen.io/lomemire/pen/ePmKGb?editors=0010">see it in codepen</a>
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre> -->
+          <!-- with state: <a href="https://codepen.io/lomemire/pen/ePmKGb?editors=0010">see it in codepen</a> -->
+          <a href="https://codepen.io/lomemire/pen/OBEXzo?editors=0010">see it in codepen</a>
         </section>
 
 				<!-- TODO: maybe move this section -->
@@ -601,7 +658,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
           <p>
             For example: you might see something like this.
           </p>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 const { name, breed } = this.props;
 console.log('name: ', name);
 console.log('breed: ', breed);
@@ -620,7 +677,7 @@ console.log('breed: ', breed);
 
         <section>
           <h2>Example AnimalCard w/ Destructuring</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class AnimalCard extends React.Component {
   constructor(props) {
     super(props);
@@ -630,11 +687,11 @@ class AnimalCard extends React.Component {
     const { name, breed, imageUrl } = this.props;
 
     return (
-      <div>
-        <div>{name}</div>
-        <div>{breed}</div>
-        <img src={imageUrl} />
-      </div>
+      &lt;div&gt;
+        &lt;div&gt;{name}&lt;/div&gt;
+        &lt;div&gt;{breed}&lt;/div&gt;
+        &lt;img src={imageUrl} /&gt;
+      &lt;/div&gt;
     );
   }
 }
@@ -652,19 +709,89 @@ class App extends React.Component {
   render() {
     const { name, breed, imageUrl } = this.state;
     return (
-      <AnimalCard
+      &lt;AnimalCard
         name={name}
         breed={breed}
         imageUrl={imageUrl}
-        />
+        /&gt;
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
 </code></pre>
           <a href="https://codepen.io/lomemire/pen/gBbKdx?editors=0010">see it in codepen</a>
         </section>
+
+        <section>
+            <h2>ES6+: Arrow functions</h2>
+            <p>Arrow functions are a new, improved syntax for functions</p>
+<pre><code class="language-jsx">
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  prependHello = message => {
+    return 'Hello, ' + message;
+    // same as: return `Hello, ${message}`;
+  };
+
+  prependGreeting = (message, greeting) => {
+    return greeting + ', ' + message;
+  };
+
+  render() { 
+    const { message } = this.props;
+    return <div>{this.prependGreeting(message, 'Hello')}</div>;
+  }
+}
+
+// Compare to:
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props);
+    this.prependGreeting = this.prependGreeting.bind(this);
+  }
+
+  prependGreeting(message, greeting) {
+    return greeting + ', ' + message;
+  }
+
+  render() { 
+    const { message } = this.props;
+    return <div>{this.prependGreeting(message, 'Hello')}</div>;
+  }
+}
+</code></pre>
+
+  <!-- <pre><code class="language-jsx">
+  // Simplified (for when there's on argument and only one call in the function body)
+  this.state.messages.map(message => &lt;span key={message.id}&gt;message.value&lt;/span&gt;);
+  
+  // More common
+  this.state.messages.map((message, index) => {
+    console.log(index);
+    return (&lt;span key={message.id}&gt;message.value&lt;/span&gt;);
+  });
+  
+  // ES5 equivalent
+  this.state.messages.map(function(message) {
+    return (&lt;span key={message.id}&gt;message.value&lt;/span&gt;)
+  });
+  </code></pre> -->
+            <p>
+              One benefit of using arrow functions is that they do not define their own `this`,
+              so you don't need to bind this anymore! (var that=this, anyone?)
+              And they are more concise than ES5 functions. Yay!
+            </p>
+            <p>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">
+                MDN docs for arrow fn
+              </a>
+              <a href="https://codepen.io/lomemire/pen/oayzbd">codepen</a>
+            </p>
+          </section>
 
 				<section>
 					<h2>What is <strong>state</strong>?</h2>
@@ -699,25 +826,28 @@ ReactDOM.render(<App />, document.getElementById('root'));
 				<section>
 					<h2>What is <strong>state</strong>?</h2>
 					<p>Local state in a parent component can be passed down to its childen as props, as we saw in the Greeting example:</p>
-					<pre><code class="javascript">
-		class Greeting extends React.Component {
-			render() {
-				return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
-			}
-		}
-		class App extends React.Component {
-			constructor() {
-				super();
-				this.state = {
-					message: 'Hello World!'
-				};
-			}
-			render() {
-				return (&lt;Greeting message={this.state.message} /&gt;);
-			}
-		}
-		ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
-					</code></pre>
+<pre><code class="language-jsx">
+class Greeting extends React.Component {
+  render() {
+    return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: 'Hello World!'
+    };
+  }
+
+  render() {
+    return (&lt;Greeting message={this.state.message} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+</code></pre>
 				</section>
 
 				<section>
@@ -725,7 +855,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 					<p>
 						We can change local state by calling <b>setState</b>
 					</p>
-<pre><code lanaguage="javascript">
+<pre><code class="language-jsx">
 class Greeting extends React.Component {
   state = {
     localMessage: this.props.message
@@ -737,9 +867,9 @@ class Greeting extends React.Component {
 
   render() {
     return (
-      <div onClick={this.changeLocalMessage}>
+      &lt;div onClick={this.changeLocalMessage}&gt;
         {this.state.localMessage}
-      </div>
+      &lt;/div&gt;
     );
   }
 }
@@ -753,13 +883,16 @@ class App extends React.Component {
   }
 
   render() {
-    return (<Greeting message={this.state.message} />);
+    return (&lt;Greeting message={this.state.message} /&gt;);
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
 </code></pre>
-					<a href="https://codepen.io/lomemire/pen/ePmZRx?editors=0010">see it in codepen</a>
+					
+          <a href="https://codepen.io/lomemire/pen/ePKzjJ?editors=0010">codepen</a>
+          <!-- <br> -->
+          <!-- <a href="https://codepen.io/lomemire/pen/gBKMKd?editors=0010">codepen with state and props</a> -->
 				</section>
 
 				<section>
@@ -801,48 +934,53 @@ ReactDOM.render(<App />, document.getElementById('root'));
 						To have a child component update the parent's state, we'll need the parent to
 						pass in a function to the child through props
 					</p>
-					<pre><code class="javascript">
-		class Greeting extends React.Component {
-			render() {
-				return (&lt;div onClick={this.props.changeMessage.bind(this)}&gt;{this.props.message}&lt;/div&gt;);
-			}
-		}
-		class App extends React.Component {
-			constructor() {
-				super();
-				this.state = {
-					message: 'Hello World!'
-				};
-			}
-			render() {
-				return (&lt;Greeting message={this.state.message} changeMessage={this.sayGoodbye} /&gt;);
-			}
-			sayGoodbye(event) {
-				event.preventDefault();
-				Equivalent to this.setState({ message: 'Goodbye' })
-			}
-		}
-		ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
-					</code></pre>
-				</section>
+<pre><code class="language-jsx">
+class Greeting extends React.Component {
+  render() {
+    return (&lt;div onClick={this.props.changeMessage}&gt;{this.props.message}&lt;/div&gt;);
+  }
+}
 
-				<section>
-					<h2>Code Breakdown!</h2>
-					<p>Let's go over the last example piece by piece:</p>
-					<ul>
-						<li>We added a sayGoodbye method to the App class, and used it as an event handler in the Greeting class. Event handlers are functions called from onClick, onSubmit, etc.
-						<pre><code class="javascript">
-		sayGoodbye(event) {
-			event.preventDefault();
-			this.setState({message: 'Goodbye'});
-		}
-						</code></pre></li>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      message: 'Hello World!'
+    };
+  }
+
+  sayGoodbye = event => {
+    event.preventDefault();
+    this.setState({ message: 'Goodbye' });
+  }
+
+  render() {
+    return (&lt;Greeting message={this.state.message} changeMessage={this.sayGoodbye} /&gt;);
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>Code Breakdown!</h2>
+      <p>Let's go over the last example piece by piece:</p>
+      <ul>
+        <li>We added a sayGoodbye method to the App class, and used it as an event handler in the Greeting class. Event handlers are functions called from onClick, onSubmit, etc.
+        <pre><code class="language-jsx">
+sayGoodbye(event) {
+  event.preventDefault();
+  this.setState({message: 'Goodbye'});
+}
+</code></pre>
+            </li>
 						<li>Event handlers do not need to be invoked (have parentheses at the end). But when a click happens, the event handler is called with an event as the argument. To prevent side effects (like form submissions from pressing a button in a form), use event.preventDefault() (above).
-							<pre><code class="javascript">
-		render() {
-			return (&lt;div onClick={this.props.changeMessage.bind(this)}&gt;{this.props.message}&lt;/div&gt;);
-		}
-							</code></pre>
+<pre><code class="language-jsx">
+render() {
+  return (&lt;div onClick={this.props.changeMessage.bind(this)}&gt;{this.props.message}&lt;/div&gt;);
+}
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -870,7 +1008,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 				<section>
 					<h2>Example: State + Props</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class Greeting extends React.Component {
   constructor(props) {
     super(props);
@@ -887,15 +1025,15 @@ class Greeting extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
+      &lt;div&gt;
+        &lt;input
           type="text"
           value={this.state.localMessage}
-          onChange={this.updateLocalMessage} />
-          <div>
+          onChange={this.updateLocalMessage} /&gt;
+          &lt;div&gt;
             {this.state.localMessage}
-          </div>
-      </div>
+          &lt;/div&gt;
+      &lt;/div&gt;
     );
   }
 }
@@ -909,13 +1047,15 @@ class App extends React.Component {
   }
 
   render() {
-    return (<Greeting defaultMessage={this.state.message} />);
+    return (&lt;Greeting defaultMessage={this.state.message} /&gt;);
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
 </code></pre>
-					<a href="https://codepen.io/lomemire/pen/dgPKXy?editors=0010">see it in codepen</a>
+          <!-- <a href="https://codepen.io/lomemire/pen/dgPKXy?editors=0010">see it in codepen</a> -->
+          <!-- <a href="https://codepen.io/lomemire/pen/gBKMKd?editors=0010">codepen</a> -->
+          <a href="https://codepen.io/lomemire/pen/dgPKXy">codepen</a>
 				</section>
 
 				<section>
@@ -935,14 +1075,14 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
         <section>
           <h2>Displaying HTML elements from a collection</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 const numbers = [1, 2, 3, 4, 5];
-const listItems = numbers.map((numbers) =>
-  <li>{numbers}</li>
+const listItems = numbers.map(num =>
+  &lt;li&gt;{num}&lt;/li&gt;
 );
 
 ReactDOM.render(
-  <ul>{listItems}</ul>,
+  &lt;ul&gt;{listItems}&lt;/ul&gt;,
   document.getElementById('root')
 );
 </code></pre>
@@ -951,10 +1091,10 @@ ReactDOM.render(
 
         <section>
           <h2>What does that warning mean</h2>
-<pre>
+<pre><code class="language-none">
 Warning: Each child in an array or iterator should have a unique 'key' prop.%s%s
 See https://fb.me/react-warning-keys for more information.
-</pre>
+</code></pre>
           <p>
             In order to know which parts of list of a elements need to be re-rendered,
             React uses a <b>key</b> on the object.
@@ -967,53 +1107,23 @@ See https://fb.me/react-warning-keys for more information.
 
         <section>
           <h2>Fixing the warning</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 const numbers = [1, 2, 3, 4, 5];
 const listItems = numbers.map(number =>
-  <li key={number}>{number}</li>
+  &lt;li key={number}&gt;{number}&lt;/li&gt;
 );
 
 ReactDOM.render(
-  <ul>{listItems}</ul>,
+  &lt;ul&gt;{listItems}&lt;/ul&gt;,
   document.getElementById('root')
 );
 </code></pre>
           <a href="https://codepen.io/lomemire/pen/YJPjva?editors=0011">codepen</a>
         </section>
 
-        <section>
-					<h2>ES6+: Arrow functions</h2>
-					<p>Arrow functions are a new, improved syntax for functions</p>
-					<pre><code class="javascript">
-		// Simplified (for when there's on argument and only one call in the function body)
-		this.state.messages.map(message =>
-						(&lt;span key={message.id}&gt;message.value&lt;/span&gt;)
-		);
-		// More common
-		this.state.messages.map((message, index) => {
-			console.log(index);
-			return (&lt;span key={message.id}&gt;message.value&lt;/span&gt;);
-		});
-		// ES5 equivalent
-		this.state.messages.map(function(message) {
-			return (&lt;span key={message.id}&gt;message.value&lt;/span&gt;)
-		});
-					</code></pre>
-					<p>
-            One benefit of using arrow functions is that they do not define their own `this`,
-            so you don't need to bind this anymore! (var that=this, anyone?)
-            And they are more concise than ES5 functions. Yay!
-          </p>
-					<p>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">
-              MDN docs for arrow fn
-            </a>
-          </p>
-				</section>
-
 				<section>
 					<h2>Spicier example with Greeting</h2>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class App extends React.Component {
   constructor() {
     super();
@@ -1029,20 +1139,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>Greetings!</div>
-        <ul>
-          { this.state.messages.map(message => {
-            return (<li key={message.id}>{message.value}</li>);
+      &lt;div&gt;
+        &lt;div&gt;Greetings!&lt;/div&gt;
+        &lt;ul&gt;
+          { this.state.messages.map(message =&gt; {
+            return (&lt;li key={message.id}&gt;{message.value}&lt;/li&gt;);
           })}
-        </ul>
+        &lt;/ul&gt;
 
-        <div>
-          { this.state.messages.map(message => {
-            return (<Greeting key={message.id} message={message.value} />);
+        &lt;div&gt;
+          { this.state.messages.map(message =&gt; {
+            return (&lt;Greeting key={message.id} message={message.value} /&gt;);
           })}
-        </div>
-       </div>
+        &lt;/div&gt;
+       &lt;/div&gt;
     );
   }
 }
@@ -1054,7 +1164,7 @@ class App extends React.Component {
 					<p>
             We can clean up this example a bit by pulling out the mapping to its own function.
           </p>
-<pre><code class="javascript">
+<pre><code class="language-jsx">
 class App extends React.Component {
   constructor() {
     super();
@@ -1070,18 +1180,18 @@ class App extends React.Component {
 
   renderGreetings = () => {
     return this.state.messages.map(message => {
-      return (<Greeting key={message.id} message={message.value} />);
+      return (&lt;Greeting key={message.id} message={message.value} /&gt;);
     });
   };
 
   render() {
     return (
-      <div>
-        <div>Greetings!</div>
-        <div>
+      &lt;div&gt;
+        &lt;div&gt;Greetings!&lt;/div&gt;
+        &lt;div&gt;
           {this.renderGreetings()}
-        </div>
-       </div>
+        &lt;/div&gt;
+       &lt;/div&gt;
     );
   }
 }
@@ -1098,13 +1208,13 @@ class App extends React.Component {
                 "Adjacent JSX elements must be wrapped in an enclosing tag"
               </li>
               <li>
-                This changed in React 16, so if you are using that version, you can render mulitple items. Remember to wrap them in an array:
-  <pre><code class="javascript">
+                This changed in React 16, so if you are using that version, you can render multiple items. Remember to wrap them in an array:
+  <pre><code class="language-jsx">
   render() {
     return [
-      <li key="1">Item 1</li>,
-      <li key="2">Item 2</li>,
-      <li key="3">Item 3</li>,
+      &lt;li key="1"&gt;Item 1&lt;/li&gt;,
+      &lt;li key="2"&gt;Item 2&lt;/li&gt;,
+      &lt;li key="3"&gt;Item 3&lt;/li&gt;,
     ];
   }
   </code></pre>
@@ -1116,92 +1226,7 @@ class App extends React.Component {
             </ul>
   
           </section>
-        
-        <section>
-          <h2>Stateless Components</h2>
-          <ul>
-            <li>We've seen some examples of components that have state and some that don't.</li>
-            <li>A component that doesn't maintain its own state is called a <b>stateless component</b>. 
-            <li>
-              Some other names you might hear: display, presentational, functional*, 
-              "dumb" (we'll see why they're called functional in a minute)
-            </li>
-            <li>
-              There are some advantages to using stateless components: They're easy to test, easy to 
-              understand, concise, and, in general, the less state you have floating around, the better.
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Stateless Components</h2>
-          <p>We've seen this before in one of the early iterations of the Greeting component:</p>
-<pre><code class="javascript">
-    class Greeting extends React.Component {
-      render() {
-        return (&lt;div&gt;{this.props.message}&lt;/div&gt;);
-      }
-    }
-    class App extends React.Component {
-      render() {
-        const message = 'Hello World!';
-        return (&lt;Greeting message={message} /&gt;);
-      }
-    }
-    ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));
-</code></pre>
-        </section>
-        
-        <section>
-          <h2>Functional Stateless Components</h2>
-          <p>Stateless components can be written as functions instead of classes, which is more concise.</p>
-          <p>Note that <b>props</b> is taken in as a function argument</p>
-<pre><code class="javascript">
-const Greeting = (props) => {
-  return &lt;div&gt;{props.message}&lt;/div&gt;;
-};
-
-class App extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    const message = 'Hello World';
-    return (&lt;Greeting message={message} /&gt;);
-  }
-}
-
-ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
-</code></pre>
-          <a href="https://codepen.io/lomemire/pen/rqMWyx">codepen</a>
-        </section>
-
-        <section>
-          <h2>Functional Stateless Components + Destructuring</h2>
-          <p>You can also destructure props in the function arguments</p>
-
-<pre><code class="javascript">
-const Greeting = ({ message }) => {
-  return &lt;div&gt;{message}&lt;/div&gt;;
-};
-
-class App extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    const message = 'Hello World';
-    return (&lt;Greeting message={message} /&gt;);
-  }
-}
-
-ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
-</code></pre>
-          <a href="https://codepen.io/lomemire/pen/MPjbow">codepen</a>
-        </section>
-
+      
 				<section>
             <h2>Stretch break!</h2>
             <img src="imgs/kitten-stretching.gif" alt="kitty!" style="height: 40vh;" />
@@ -1215,12 +1240,11 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
       </footer>
 		</div>
 
-
 		<script src="dist/js/head.min.js"></script>
-		<script src="dist/js/reveal.min.js"></script>
+    <script src="dist/js/reveal.min.js"></script>
+    <script src="plugin/prism/prism.js"></script>
 
 		<script>
-
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
@@ -1236,10 +1260,10 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
 					{ src: 'dist/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
-                    { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'plugin/accessibility-helper/js/accessibility-helper.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
