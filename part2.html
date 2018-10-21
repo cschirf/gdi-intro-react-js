@@ -360,7 +360,7 @@ this.setState(prevState => {
   <pre><code class="language-jsx">              
   handleChange = (newInfo) => {
     this.setState({ myVar: newInfo });
-    updateServer(this.state.value);
+    updateServer(this.state.myVar);
   };
   </code></pre>
           <p class="fragment" style="text-align: left;">
@@ -370,7 +370,7 @@ this.setState(prevState => {
           <p class="fragment" style="text-align: left;">Callbacks to the rescue! We can send a callback to setState like so:</p>
 <pre class="fragment"><code class="language-jsx">              
 handleChange = (newInfo) => {
-  this.setState({ myVar: newInfo }, updateServer(this.state.value));
+  this.setState({ myVar: newInfo }, updateServer(this.state.myVar));
 };
 </code></pre>
             <p class="fragment" style="text-align: left;">With this approach, <b>updateServer</b> will only be called <em>after</em> the new value of myVar is set.</p>
@@ -474,7 +474,7 @@ componentDidUpdate(prevProps, prevState) {
                     but know this is an anti-pattern. If you really need to do this, though, 
                     React 16 has a new hook <b>getDerivedStateFromProps</b>
                   </li>
-                  <li>to perform a side effect when props change. React suggests moving that logic to compnentDidUpdate</li>
+                  <li>to perform a side effect when props change. React suggests moving that logic to componentDidUpdate</li>
                 </ul>
               <li>If you are using this, make sure to check for the prop change you are looking for</li>
               </li>

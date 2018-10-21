@@ -62,6 +62,289 @@
       </section>
 
       <section>
+        <h1>Review</h1>
+      </section>
+
+      <section>
+        <h2>Which of the following are true?</h2>
+        <ol>
+          <li>React is a framework</li>
+          <li>React is a library</li>
+          <li>React manages global state</li>
+          <li>React is for rending the view layer of an application</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Which of the following are true?</h2>
+        <ol>
+          <li>False - React is a framework</li>
+          <li>True - eact is a library</li>
+          <li>False - React manages global state</li>
+          <li>True - React is for rending the view layer of an application</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>What class do you extend to create a React component?</h2>
+        <p class="fragment">React.Component (alternatively, React.PureComponent)</p>
+      </section>
+
+      <section>
+        <h2>What's the special keyword you use to add a CSS class to an element in JSX?</h2>
+        <p class="fragment"><b>className</b></p>
+<pre class="fragment"><code class="language-jsx">
+//JSX
+class ExampleComponent extends React.Component {
+  render() {
+    &lt;div className="greeting-container"&gt;
+      hello. i am styled text.
+    &lt;/div&gt;
+  }
+}
+
+// CSS
+.greeting-container {
+  font-weight: bold;
+  color: darkturquoise;
+  font-size: 2.5em;
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>How does data (state) flow in React?</h2>
+        <p class="fragment">Data flow in React is one-directional. It always flows down.</p>
+      </section>
+
+      <section>
+        <h2>If a child component's state changes, does the parent get re-rendered?</h2>
+        <p class="fragment">No, a child's state does not affect the parent because of the unidirectional data model.</p>
+      </section>
+
+      <section>
+        <h2>What kind of component is TodoItem?</h2>
+<pre><code class="language-jsx">
+class TodoItem extends React.Component {
+  render() {
+    &lt;div&gt;
+      &lt;input type="checkbox" value={this.props.isComplete} /&gt;
+      &lt;span&gt;{this.props.todoText}&lt;/span&gt;
+    &lt;/div&gt;
+  }
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>True or False? Props can be sent from the child to the parent.</h2>
+        <p class="fragment">False, props an only sent from the parent to the child.</p>
+      </section>
+
+      <section>
+        <h2>True or False? A child can change or update its props.</h2>
+        <p class="fragment">False, props are read only values and cannot be modified by the children components.</p>
+      </section>
+
+      <section>
+        <h2>True or False? A child component can update its local state</h2>
+        <p class="fragment">True, local state is completely encapsulated in the component, 
+          so it doesn't matter whether or not the component is a parent or a child.</p>
+      </section>
+
+      <section>
+        <h2>True or False? A component does not have to be sent props.</h2>
+        <p class="fragment">True! Props are optional. You should only send down necessary information.</p>
+      </section>
+
+      <section>
+        <h2>True or False? A component must keep state.</h2>
+        <p class="fragment">
+          False, not only is this not necessary, but there are several advantages that display components have over stateful components.
+        </p>
+      </section>
+
+      <section>
+        <h2>What is the difference between state & props?</h2>
+        <p class="fragment">
+          Props are read only values that are sent to a component. 
+          They are outside of the control of the component receiving them.
+          <br>
+          State represents mutatable data within a component 
+        </p>
+      </section>
+
+      <section>
+        <h2>Where is local state initialized?</h2>
+        <p class="fragment">In the class's constructor:</p>
+<pre class="fragment"><code class="language-jsx">
+class Princess extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      hasTiara: true,
+      title: 'Princess',
+      color: 'Bubblegum pink'
+    };
+  }
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>What is the React function that updates state?</h2>
+        <p class="fragment">setState</p>
+<pre class="fragment"><code class="language-jsx">
+resetName = () => {
+  this.setState({ name: 'Oreo' });
+};
+</code></pre>
+      </section>
+
+      <section>
+        <h2>What is happening here?</h2>
+<pre><code class="language-jsx">
+toggleCheckbox = () => {
+  this.setState(prevState => {
+    return { isChecked: !prevState.isChecked };
+  });
+};
+</code></pre>
+        <p class="fragment">Why would you want to update state this way?</p>
+      </section>
+
+      <section>
+        <h2>Here are all the different ways to call setState: </h2>
+<pre><code class="language-jsx">
+// function signature
+setState(updater[, callback])
+
+// updater can be an object representing changes to be merged into state
+resetName = () => {
+  this.setState({ name: 'Oreo' });
+};
+
+// updater can also be a fn that takes the previous state as an argument
+toggleCheckbox = () => {
+  this.setState(prevState => {
+    return { isChecked: !prevState.isChecked };
+  });
+};
+
+// setState can also take an optional callback argument, which
+//  is called after state has been updated
+// you are sending a reference to the fn so you don't want to invoke it.
+handleNameChange = event => {
+  this.setState({ name: event.target.value }, this.autoSaveForm);
+  
+  // this would be wrong:
+  // this.setState({ name: event.target.value }, this.autoSaveForm());
+};
+
+// or:
+toggleCheckbox = () => {
+  this.setState(prevState => {
+    return { isChecked: !prevState.isChecked };
+  }, this.autoSaveForm;
+};
+</code></pre>
+      </section>
+
+      <!-- <section>
+        <h2>True or false? setState is not guaranteed to be called synchronously</h2>
+        <p class="fragment">True. React may batch state updates so you should not rely on this.state for calculating the next value</p>
+      </section> -->
+
+      <section>
+        <h2>Is this a valid component?</h2>
+<pre><code class="language-jsx">
+const AuthorAvatar = props => {
+  return (
+    &lt;div&gt;
+      &lt;img src={props.authorImg} /&gt;
+      &lt;div&gt;{props.name}&lt;/div&gt;
+      &lt;div&gt;{props.twitterHandle}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+</code></pre>
+        <p class="fragment">Yes! This is the way to write a stateless component as a function (functional stateless component).</p>
+      </section>
+
+      <section>
+        <h2>what is this code doing?</h2>
+<pre><code class="language-jsx">
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+</code></pre>
+
+        <p class="fragment">
+          This is inserting the root component of our React app (&lt;App /&gt;) into the DOM. 
+          It replaces the insides of the element with id <b>root</b> with the DOM representation of &lt;App /&gt;. 
+        </p>
+      </section>
+
+      <section>
+        <h2>What special property should you add to items in a list you are displaying? Why should you add it?</h2>
+        <p class="fragment">The key property should be added to items in collections so React knows what changed. Keys must be unique across the collection.</p>
+      </section>
+
+      <section>
+        <h2>Extra Credit</h2>
+      </section>
+
+      <section>
+        <h2>What is the difference between these two components?</h2>
+<pre><code class="language-jsx">
+class TodoItem extends React.Component {
+  render() {
+    &lt;div&gt;
+      &lt;input type="checkbox" value={this.props.isComplete} /&gt;
+      &lt;span&gt;{this.props.todoText}&lt;/span&gt;
+    &lt;/div&gt;
+  }
+}
+
+class TodoItem extends React.PureComponent {
+  render() {
+    &lt;div&gt;
+      &lt;input type="checkbox" value={this.props.isComplete} /&gt;
+      &lt;span&gt;{this.props.todoText}&lt;/span&gt;
+    &lt;/div&gt;
+  }
+}
+</code></pre>
+      </section>
+
+      <section>
+        <h2>What kind of event is sent to an event handler in React?</h2>
+        <p class="fragment">
+          A SyntheticEvent&mdash; it works pretty much just the same as a regular event, but browser 
+          specific behavior is abstracted away for you.
+        </p>
+      </section>
+
+      <section>
+        <h2>Can a child change its parent's state?</h2>
+        <p class="fragment">
+          This one is tricky: Yes, it is possible to do this by having the parent also send down a function to update its state. 
+          The child can then invoke that function, which will change the parent's state.
+        </p>
+        <p class="fragment">
+          What the render process looks like for this: A call from the child updates the parent, 
+          causing the parent to re-render. Because the parent has updated, any children it has 
+          (including the one that kicked this whole process off) will also be re-rendered.
+        </p>
+        <p class="fragment">
+          That's a lot of renders! You should avoid this pattern when possible, but it's there if necessary.
+        </p>
+      </section>
+
+      <section>
+        <h1>Questions</h1>
+      </section>
+
+      <section>
         <h1>Helpful random things you might need to know</h1>
       </section>
 
@@ -70,20 +353,29 @@
 <pre><code class="language-jsx">
 render() {
   return (
-    <div>
+    &lt;div&gt;
       {!!hasErrorMessage && &lt;ErrorBar message="You done messed up" /&gt;}
-    </div>
+    &lt;/div&gt;
   );
 }
 </code></pre>
+        <p>
+          If you haven't seen !! before: it casts a truthy check to a true/false value.
+          This can be nice to use because sometimes just the truthy check (e.g., 
+          <code class="inline">
+            {numErrorMsgs && &lt;ErrorBar /&gt;}
+          </code>) will also display the variable you're checking.
+        </p>
       </section>
 
       <section>
         <h2>Ternary Operator</h2>
 <pre><code class="language-jsx">
 render() {
+  const { items } = this.state;
   return (
     &lt;div&gt;
+      { /* boolean condition ? the thing to do if true : the thing to do if false; */ }
       {!!hasItems ? &lt;DisplayComponent items={items} /&gt; : &lt;EmptyState /&gt;}
     &lt;/div&gt;
   );
@@ -92,8 +384,75 @@ render() {
       </section>
 
       <section>
+        <h2>Renaming a deconstructed variable</h2>
+<pre><code class="language-jsx">
+render() {
+  const { items: itemList } = this.state;
+  return (
+    &lt;div&gt;
+      {!!hasItems ? &lt;DisplayComponent items={itemList} /&gt; : &lt;EmptyState /&gt;}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+        <p>
+          <code class="inline">{ items: itemList }</code><br> items is the name of the variable 
+          in this.state (this.state the object we're deconstructing) and itemList is the new name we want to use.
+        </p>
+      </section>
+
+      
+      <section>
+          <h2>Adding comments</h2>
+<pre><code class="language-jsx">
+render() {
+  { /* I am a JSX comment */ }
+  return &lt;div&gt;hello, world!&lt;/div&gt;
+}
+</code></pre>
+          <p>(I sneakily already showed you this)</p>
+        </section>
+
+      <section>
+        <h2>PropTypes</h2>
+        <p>
+          A component can check that the props it receives match what 
+          it expects using PropTypes. You can also indicate whether or not a prop is required. 
+          PropTypes are checked at run time.
+        </p>
+        <p>PropTypes also serve as great documentation.</p>
+<pre><code class="language-jsx">
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class TeddyBear extends React.Component {
+  ...
+}
+
+TeddyBear.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number,
+  color: PropTypes.string
+};
+
+// Alternative syntax that does exactly the same thing:
+class TeddyBear extends React.Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    color: PropTypes.string
+  };
+}
+</code></pre>
+      </section>
+
+      <section>
         <h2>Default Props</h2>
-        <p>A component can also set its own default props:</p>
+        <p>
+          A component can also set default values of props it may receive.
+          Do this where it makes sense to have defaults&mdash; 
+          for example, you should not set defaults for required props.
+        </p>
 <pre><code class="language-javascript">
 import React from 'react';
 
@@ -121,40 +480,10 @@ class TeddyBear extends React.Component {
       </section>
 
       <section>
-        <h2>PropTypes</h2>
-        <p>
-          You can document and check that the props your component has received matches what 
-          it expects using PropTypes. PropTypes are checked at run time.
-        </p>
-<pre><code class="language-jsx">
-import React from 'react';
-import PropTypes from 'prop-types';
-
-class TeddyBear extends React.Component {
-  ...
-}
-
-TeddyBear.propTypes = {
-  name: PropTypes.string,
-  price: PropTypes.number,
-  color: PropTypes.string
-};
-
-// Alternative syntax that does exactly the same thing:
-class TeddyBear extends React.Component {
-  static propTypes = {
-    name: PropTypes.string,
-    price: PropTypes.number,
-    color: PropTypes.string
-  };
-}
-</code></pre>
-      </section>
-
-      <section>
         <h2>Pure functions</h2>
         <p class="keyword-definition">
-            <i>\ˈpyu̇r ˈfəŋ(k)-shən\</i> &mdash; A function where the return value is only determined by its input values, 
+            <!-- <i>\ˈpyu̇r ˈfəŋ(k)-shən\</i> &mdash;  -->
+            A function where the return value is only determined by its input values, 
             without observable side effects. Given the same input, it will always return the same output.
         </p>
         <p>
@@ -229,6 +558,17 @@ const appendBazinga = sickBurnInput => {
 
       <section>
         <h2>Starting your own project</h2>
+        <h3>You will need</h3>
+        <ul>
+          <li>node, version 6.x+</li>
+          <li>npm</li>
+          <li>n (node version manager) [Optional]</li>
+          <li>text editor or IDE of your choice </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Starting your own project</h2>
         <p>
           There are different ways to start a React app, but the simplest is to use Facebooks's 
           <a href="https://github.com/facebook/create-react-app">create-react-app</a>
@@ -247,6 +587,27 @@ npm init react-app my-app
 # with yarn
 yarn create react-app my-app
 </code></pre>
+      </section>
+
+      <section>
+        <h1>Workshop</h1>
+      </section>
+
+      <section>
+        <h2>Project ideas</h2>
+        <ul style="font-size: 90%;">
+          <li>Create a simple book store search page&mdash; allow the user to search or filter for books and display the results.</li>
+          <li>Create a flashcard application: allow for two modes&mdash; edit and quiz</li>
+          <li>Create a simple blog app</li>
+          <li>Create an application to convert between RGB, CYMK, HSL, and hex.</li>
+          <li>Create profile cards for GitHub users, showing metrics on number of commits, number of forks, etc.</li>
+          <li>Create social media profile cards showing metrics on number of tweets, number of retweets, etc.</li>
+          <li>Create a simple Fitbit-like exercise summary page</li>
+          <li>Build a simple chat app</li>
+          <li>Build a simple version of Twitter</li>
+          <li>Build a simple Yelp-like application.</li>
+          <li>Remake Trello</li>
+        </ul>
       </section>
     </div>
   </div>

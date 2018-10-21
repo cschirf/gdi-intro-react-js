@@ -15,8 +15,15 @@ pre[class*="language-"] code {
   font-size: 0.9em !important;
 }
 
+code.inline {
+  font-size: 0.75em !important; 
+  background: none !important; 
+  color: inherit !important; 
+  padding: 0 !important;
+}
+
 .keyword-definition {
-  /* font-style: italic !important; */
+  font-style: italic !important;
   padding: 0.25em !important; 
   background-color: #4c4c4c !important; 
   color: #ffffff !important;
