@@ -413,6 +413,20 @@ render() {
           <p>(I sneakily already showed you this)</p>
         </section>
 
+        <section>
+          <h2>Add a displayName</h2>
+          <p>The displayName field is used in debugging messages. It is helpful to set your own instead of having JSX set the value.</p>
+<pre><code class="language-jsx">
+class TodoItem extends React.Component {
+  constructor() {}
+  
+  static displayName = 'TodoItem';
+
+  render() {}
+}
+</code></pre>
+        </section>
+
       <section>
         <h2>PropTypes</h2>
         <p>
@@ -500,6 +514,38 @@ const appendBazinga = sickBurnInput => {
   sickBurnInput = sickBurnInput + ' Bazinga!';
 };
 </code></pre>
+      </section>
+
+      <section>
+        <h2>Anatomy of a Component</h2>
+<pre><code class="language-javascript">
+import React from 'react';
+// other imports 
+
+export default class MyComponent extends React.Component {
+  constructor() {}
+  
+  static displayName = 'MyComponent';
+
+  // utility functions
+  calculatePercentage = () => {};
+
+  // event handlers
+  handleFormInputChange = () => {};
+
+  // other kinds of helper functions
+  generateErrorText = () => {};
+
+  // helper render functions
+  renderEmptyState = () => {};
+
+  render() {}
+}
+
+MyComponent.propTypes = { ... };
+MyComponent.defaultProps = { ... };
+</code></pre>
+        <p>* If using Redux, you'll want to export the class normally and then export as default the connected component</p>
       </section>
 
       <section>
